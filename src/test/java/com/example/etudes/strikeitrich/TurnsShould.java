@@ -39,8 +39,7 @@ public class TurnsShould {
     public void pay_fixed_expenses() throws Exception {
         turns.newTurn();
 
-        verify(player1).payFixedExpenses();
-        verify(player2).payFixedExpenses();
+        players.stream().forEach(x -> verify(x).payFixedExpenses());
     }
 
     @Test

@@ -65,5 +65,12 @@ public class TurnsShould {
         players.stream().forEach(x -> verify(x).finishedInventoryUnits(condition));
     }
 
+    @Test
+    public void ask_players_about_their_bids() throws Exception {
+        newTurn();
+
+        players.stream().forEach(x -> verify(x).obtainBids());
+    }
+
 
 }

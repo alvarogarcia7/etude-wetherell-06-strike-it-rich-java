@@ -3,6 +3,8 @@ package com.example.etudes.strikeitrich;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.text.Bidi;
+
 public class Player {
 
     private int standardFactories;
@@ -68,5 +70,9 @@ public class Player {
 
     void finishedInventoryUnits(Condition condition) {
 
+    }
+
+    public Bid obtainBids() {
+        return null;
     }
 }

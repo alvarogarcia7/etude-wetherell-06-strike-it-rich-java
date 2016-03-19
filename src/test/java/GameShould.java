@@ -32,8 +32,7 @@ public class GameShould {
 
     @Test
     public void deal_initial_materials_to_each_player() throws Exception {
-        List<Player> players = asList(player1, player2);
-        Game game = new Game(gameStarter, Turns.aNew(players, bank), players);
+        Game game = new Game(gameStarter, turns, asList(player1, player2));
 
         game.start();
 

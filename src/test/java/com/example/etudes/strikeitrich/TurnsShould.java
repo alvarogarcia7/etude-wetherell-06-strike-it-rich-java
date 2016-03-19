@@ -37,14 +37,13 @@ public class TurnsShould {
 
     @Test
     public void inform_players_about_market_conditions() throws Exception {
-        Condition rawMaterialUnitConditions = condition;
-        given(bank.rawMaterialUnitConditions()).willReturn(rawMaterialUnitConditions);
+        given(bank.rawMaterialUnitConditions()).willReturn(condition);
         Turns turns = Turns.aNew(Arrays.asList(player1, player2), bank);
 
         turns.newTurn();
 
-        verify(player1).rawMaterialUnits(rawMaterialUnitConditions);
-        verify(player2).rawMaterialUnits(rawMaterialUnitConditions);
+        verify(player1).rawMaterialUnits(condition);
+        verify(player2).rawMaterialUnits(condition);
     }
 
 

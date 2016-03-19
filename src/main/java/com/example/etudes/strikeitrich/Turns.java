@@ -10,8 +10,6 @@ public class Turns {
     }
 
     public void newTurn() {
-        if (players.size() > 0) {
-            players.get(0).payFixedExpenses();
-        }
+        players.forEach(Player::payFixedExpenses);
     }
 }

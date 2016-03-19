@@ -19,5 +19,6 @@ public class Game {
 
     public void start() {
         players.forEach(gameStarter::deal);
+        turns.newTurn();
     }
 }

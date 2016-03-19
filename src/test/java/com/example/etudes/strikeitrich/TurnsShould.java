@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -19,16 +20,19 @@ public class TurnsShould {
 
     @Mock
     private Player player2;
+
     @Mock
     private Bank bank;
 
     @Mock
     Condition condition;
     private Turns turns;
+    private List<Player> players;
 
     @Before
     public void setUp() throws Exception {
-        turns = Turns.aNew(Arrays.asList(player1, player2), bank);
+        players = Arrays.asList(player1, player2);
+        turns = Turns.aNew(players, bank);
     }
 
     @Test
@@ -45,8 +49,7 @@ public class TurnsShould {
 
         turns.newTurn();
 
-        verify(player1).rawMaterialUnits(condition);
-        verify(player2).rawMaterialUnits(condition);
+        players.stream().forEach(x -> verify(x).rawMaterialUnits(condition));
     }
 
 

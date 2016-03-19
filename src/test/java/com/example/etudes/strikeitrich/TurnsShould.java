@@ -59,8 +59,7 @@ public class TurnsShould {
 
         turns.newTurn();
 
-        verify(player1).finishedInventoryUnits(condition);
-        verify(player2).finishedInventoryUnits(condition);
+        players.stream().forEach(x -> verify(x).finishedInventoryUnits(condition));
     }
 
 

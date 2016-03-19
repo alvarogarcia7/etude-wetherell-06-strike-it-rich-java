@@ -1,19 +1,30 @@
 import com.example.etudes.strikeitrich.Game;
+import com.example.etudes.strikeitrich.GameStarter;
 import com.example.etudes.strikeitrich.Player;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
+import java.util.Arrays;
 
+import static org.mockito.Mockito.verify;
+
+@RunWith(MockitoJUnitRunner.class)
 public class GameShould {
+
+    @Mock
+    GameStarter gameStarter;
+
+    @Mock
+    Player player1;
 
     @Test
     public void deal_initial_materials_to_each_player() throws Exception {
-        Player player1 = new Player(0, 0, 0, 0);
+        Game game = new Game(gameStarter, Arrays.asList(player1));
 
-        Game game = new Game(player1);
         game.start();
 
-        assertThat(player1, is(new Player(2, 4, 2, 10_000)));
+        verify(gameStarter).deal(player1);
     }
 }

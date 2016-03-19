@@ -2,6 +2,7 @@ package com.example.etudes.strikeitrich;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Arrays;
@@ -12,6 +13,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class TurnsShould {
 
+    @Mock
     private Player player;
 
     @Test

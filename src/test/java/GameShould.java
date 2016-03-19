@@ -8,6 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Arrays;
 
+import static java.util.Arrays.*;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -24,7 +25,7 @@ public class GameShould {
 
     @Test
     public void deal_initial_materials_to_each_player() throws Exception {
-        Game game = new Game(gameStarter, Arrays.asList(player1, player2));
+        Game game = new Game(gameStarter, asList(player1, player2));
 
         game.start();
 

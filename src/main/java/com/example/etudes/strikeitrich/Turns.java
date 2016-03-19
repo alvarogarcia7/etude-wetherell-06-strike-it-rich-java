@@ -10,12 +10,13 @@ public class Turns {
         this(players, new Bank());
     }
 
-    public Turns(List<Player> players, Bank bank) {
+    Turns(List<Player> players, Bank bank) {
         this.players = players;
         this.bank = bank;
     }
 
     public void newTurn() {
         players.forEach(Player::payFixedExpenses);
+        players.forEach(x -> x.rawMaterialUnits(bank.rawMaterialUnitConditions()));
     }
 }

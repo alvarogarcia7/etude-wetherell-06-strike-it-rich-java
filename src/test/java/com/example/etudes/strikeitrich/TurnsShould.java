@@ -1,5 +1,6 @@
 package com.example.etudes.strikeitrich;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -23,11 +24,15 @@ public class TurnsShould {
 
     @Mock
     Condition condition;
+    private Turns turns;
+
+    @Before
+    public void setUp() throws Exception {
+        turns = Turns.aNew(Arrays.asList(player1, player2), bank);
+    }
 
     @Test
     public void pay_fixed_expenses() throws Exception {
-        Turns turns = Turns.aNew(Arrays.asList(player1, player2), bank);
-
         turns.newTurn();
 
         verify(player1).payFixedExpenses();
@@ -37,7 +42,6 @@ public class TurnsShould {
     @Test
     public void inform_players_about_market_rawMaterialUnit_conditions() throws Exception {
         given(bank.rawMaterialUnitConditions()).willReturn(condition);
-        Turns turns = Turns.aNew(Arrays.asList(player1, player2), bank);
 
         turns.newTurn();
 
@@ -49,7 +53,6 @@ public class TurnsShould {
     @Test
     public void inform_players_about_market_finishedInventoryUnits_conditions() throws Exception {
         given(bank.finishedInventoryUserConditions()).willReturn(condition);
-        Turns turns = Turns.aNew(Arrays.asList(player1, player2), bank);
 
         turns.newTurn();
 

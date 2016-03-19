@@ -5,6 +5,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Collections;
+import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,7 +32,8 @@ public class GameShould {
 
     @Test
     public void deal_initial_materials_to_each_player() throws Exception {
-        Game game = new Game(gameStarter, asList(player1, player2), bank);
+        List<Player> players = asList(player1, player2);
+        Game game = new Game(gameStarter, Turns.aNew(players, bank), players);
 
         game.start();
 

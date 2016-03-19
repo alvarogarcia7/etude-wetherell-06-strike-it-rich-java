@@ -6,7 +6,7 @@ public class Turns {
     private final List<Player> players;
     private final Bank bank;
 
-    static Turns aNew(List<Player> players, Bank bank) {
+    public static Turns aNew(List<Player> players, Bank bank) {
         return new Turns(players, bank);
     }
 

@@ -22,6 +22,9 @@ public class TurnsShould {
     @Mock
     private Bank bank;
 
+    @Mock
+    Condition condition;
+
     @Test
     public void pay_fixed_expenses() throws Exception {
         Turns turns = Turns.aNew(Arrays.asList(player1, player2), bank);
@@ -34,7 +37,7 @@ public class TurnsShould {
 
     @Test
     public void inform_players_about_market_conditions() throws Exception {
-        Condition rawMaterialUnitConditions = new Condition(20, 6_000);
+        Condition rawMaterialUnitConditions = condition;
         given(bank.rawMaterialUnitConditions()).willReturn(rawMaterialUnitConditions);
         Turns turns = Turns.aNew(Arrays.asList(player1, player2), bank);
 

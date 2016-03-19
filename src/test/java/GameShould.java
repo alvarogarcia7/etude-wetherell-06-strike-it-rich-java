@@ -19,12 +19,16 @@ public class GameShould {
     @Mock
     Player player1;
 
+    @Mock
+    Player player2;
+
     @Test
     public void deal_initial_materials_to_each_player() throws Exception {
-        Game game = new Game(gameStarter, Arrays.asList(player1));
+        Game game = new Game(gameStarter, Arrays.asList(player1, player2));
 
         game.start();
 
         verify(gameStarter).deal(player1);
+        verify(gameStarter).deal(player2);
     }
 }

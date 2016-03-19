@@ -1,6 +1,5 @@
 package com.example.etudes.strikeitrich;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Game {

@@ -36,7 +36,7 @@ public class TurnsShould {
     }
 
     @Test
-    public void inform_players_about_market_conditions() throws Exception {
+    public void inform_players_about_market_rawMaterialUnit_conditions() throws Exception {
         given(bank.rawMaterialUnitConditions()).willReturn(condition);
         Turns turns = Turns.aNew(Arrays.asList(player1, player2), bank);
 

@@ -8,8 +8,8 @@ public class Game {
     private final List<Player> players;
     private final Turns turns;
 
-    public Game(GameStarter gameStarter, List<Player> players) {
-        this(gameStarter, new Turns(Collections.emptyList()), players);
+    public Game(GameStarter gameStarter, List<Player> players, Bank bank) {
+        this(gameStarter, Turns.aNew(players, bank), players);
     }
 
     public Game(GameStarter gameStarter, Turns turns, List<Player> players) {

@@ -1,20 +1,15 @@
-import com.example.etudes.strikeitrich.Game;
-import com.example.etudes.strikeitrich.GameStarter;
-import com.example.etudes.strikeitrich.Player;
-import com.example.etudes.strikeitrich.Turns;
+import com.example.etudes.strikeitrich.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Collections;
-import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GameShould {
@@ -31,9 +26,12 @@ public class GameShould {
     @Mock
     private Turns turns;
 
+    @Mock
+    private Bank bank;
+
     @Test
     public void deal_initial_materials_to_each_player() throws Exception {
-        Game game = new Game(gameStarter, asList(player1, player2));
+        Game game = new Game(gameStarter, asList(player1, player2), bank);
 
         game.start();
 

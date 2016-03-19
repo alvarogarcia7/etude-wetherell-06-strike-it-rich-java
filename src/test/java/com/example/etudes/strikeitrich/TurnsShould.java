@@ -24,7 +24,7 @@ public class TurnsShould {
 
     @Test
     public void pay_fixed_expenses() throws Exception {
-        Turns turns = new Turns(Arrays.asList(player1, player2));
+        Turns turns = Turns.aNew(Arrays.asList(player1, player2), bank);
 
         turns.newTurn();
 
@@ -36,7 +36,7 @@ public class TurnsShould {
     public void inform_players_about_market_conditions() throws Exception {
         Condition rawMaterialUnitConditions = new Condition(20, 6_000);
         given(bank.rawMaterialUnitConditions()).willReturn(rawMaterialUnitConditions);
-        Turns turns = new Turns(Arrays.asList(player1, player2), bank);
+        Turns turns = Turns.aNew(Arrays.asList(player1, player2), bank);
 
         turns.newTurn();
 

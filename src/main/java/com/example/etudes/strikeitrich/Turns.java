@@ -6,11 +6,15 @@ public class Turns {
     private final List<Player> players;
     private final Bank bank;
 
-    Turns(List<Player> players) {
+    static Turns aNew(List<Player> players, Bank bank) {
+        return new Turns(players, bank);
+    }
+
+    private Turns(List<Player> players) {
         this(players, new Bank());
     }
 
-    Turns(List<Player> players, Bank bank) {
+    private Turns(List<Player> players, Bank bank) {
         this.players = players;
         this.bank = bank;
     }

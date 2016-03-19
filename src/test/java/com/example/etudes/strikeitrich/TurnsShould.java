@@ -46,4 +46,16 @@ public class TurnsShould {
     }
 
 
+    @Test
+    public void inform_players_about_market_finishedInventoryUnits_conditions() throws Exception {
+        given(bank.finishedInventoryUserConditions()).willReturn(condition);
+        Turns turns = Turns.aNew(Arrays.asList(player1, player2), bank);
+
+        turns.newTurn();
+
+        verify(player1).finishedInventoryUnits(condition);
+        verify(player2).finishedInventoryUnits(condition);
+    }
+
+
 }

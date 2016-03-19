@@ -67,4 +67,8 @@ public class Player {
     public void rawMaterialUnits(Condition rawMaterialUnitConditions) {
         this.rawMaterialUnitConditions = rawMaterialUnitConditions;
     }
+
+    public void finishedInventoryUnits(Condition condition) {
+
+    }
 }

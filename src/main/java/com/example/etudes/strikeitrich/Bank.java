@@ -4,4 +4,8 @@ public class Bank {
     public Condition rawMaterialUnitConditions() {
         return null;
     }
+
+    public Condition finishedInventoryUserConditions() {
+        return null;
+    }
 }

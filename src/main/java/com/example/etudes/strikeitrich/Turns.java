@@ -10,10 +10,6 @@ public class Turns {
         return new Turns(players, bank);
     }
 
-    private Turns(List<Player> players) {
-        this(players, new Bank());
-    }
-
     private Turns(List<Player> players, Bank bank) {
         this.players = players;
         this.bank = bank;

@@ -37,16 +37,20 @@ public class TurnsShould {
 
     @Test
     public void pay_fixed_expenses() throws Exception {
-        turns.newTurn();
+        newTurn();
 
         players.stream().forEach(x -> verify(x).payFixedExpenses());
+    }
+
+    private void newTurn() {
+        turns.newTurn();
     }
 
     @Test
     public void inform_players_about_market_rawMaterialUnit_conditions() throws Exception {
         given(bank.rawMaterialUnitConditions()).willReturn(condition);
 
-        turns.newTurn();
+        newTurn();
 
         players.stream().forEach(x -> verify(x).rawMaterialUnits(condition));
     }
@@ -56,7 +60,7 @@ public class TurnsShould {
     public void inform_players_about_market_finishedInventoryUnits_conditions() throws Exception {
         given(bank.finishedInventoryUserConditions()).willReturn(condition);
 
-        turns.newTurn();
+        newTurn();
 
         players.stream().forEach(x -> verify(x).finishedInventoryUnits(condition));
     }

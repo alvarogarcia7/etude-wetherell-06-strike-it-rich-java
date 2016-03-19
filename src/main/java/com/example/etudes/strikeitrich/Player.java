@@ -10,7 +10,7 @@ public class Player {
     private int finishedInventoryUnits;
     private int cash;
 
-    public Player(int standardFactories, int rawMaterialUnits, int finishedInventoryUnits, int cash) {
+    Player(int standardFactories, int rawMaterialUnits, int finishedInventoryUnits, int cash) {
         this.standardFactories = standardFactories;
         this.rawMaterialUnits = rawMaterialUnits;
         this.finishedInventoryUnits = finishedInventoryUnits;
@@ -59,4 +59,7 @@ public class Player {
                 .toHashCode();
     }
 
+    void payFixedExpenses() {
+
+    }
 }

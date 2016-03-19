@@ -1,5 +1,6 @@
 package com.example.etudes.strikeitrich;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -8,7 +9,7 @@ public class Game {
     private final Turns turns;
 
     public Game(GameStarter gameStarter, List<Player> players) {
-        this(gameStarter, new Turns(), players);
+        this(gameStarter, new Turns(Collections.emptyList()), players);
     }
 
     public Game(GameStarter gameStarter, Turns turns, List<Player> players) {

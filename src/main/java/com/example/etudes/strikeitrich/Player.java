@@ -9,6 +9,7 @@ public class Player {
     private int rawMaterialUnits;
     private int finishedInventoryUnits;
     private int cash;
+    private Condition rawMaterialUnitConditions;
 
     Player(int standardFactories, int rawMaterialUnits, int finishedInventoryUnits, int cash) {
         this.standardFactories = standardFactories;
@@ -61,5 +62,9 @@ public class Player {
 
     void payFixedExpenses() {
 
+    }
+
+    public void rawMaterialUnits(Condition rawMaterialUnitConditions) {
+        this.rawMaterialUnitConditions = rawMaterialUnitConditions;
     }
 }

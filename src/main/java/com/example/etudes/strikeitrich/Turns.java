@@ -18,5 +18,6 @@ public class Turns {
     public void newTurn() {
         players.forEach(Player::payFixedExpenses);
         players.forEach(x -> x.rawMaterialUnits(bank.rawMaterialUnitConditions()));
+        players.forEach(x -> x.finishedInventoryUnits(bank.finishedInventoryUserConditions()));
     }
 }

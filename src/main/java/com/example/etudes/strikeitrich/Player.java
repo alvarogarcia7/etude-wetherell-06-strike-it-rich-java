@@ -72,7 +72,7 @@ public class Player {
 
     }
 
-    public Bid obtainBids() {
+    Bid obtainBid() {
         return null;
     }
 }

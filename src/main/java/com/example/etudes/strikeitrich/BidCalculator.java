@@ -2,11 +2,18 @@ package com.example.etudes.strikeitrich;
 
 import java.util.List;
 
-public class BidCalculator {
-    public BidCalculator(int units, int minimumPrice, List<Bid> bids) {
+class BidCalculator {
+    private final int units;
+    private final int minimumPrice;
+    private final List<Bid> bids;
+
+    BidCalculator(int units, int minimumPrice, List<Bid> bids) {
+        this.units = units;
+        this.minimumPrice = minimumPrice;
+        this.bids = bids;
     }
 
-    public void distribute() {
-
+    void distribute() {
+        bids.forEach(Bid::accept);
     }
 }

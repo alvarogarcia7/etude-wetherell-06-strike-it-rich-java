@@ -1,8 +1,17 @@
 package com.example.etudes.strikeitrich;
 
-public class Bid {
-    public Bid(int units, int price, Player bidder) {
+class Bid {
+    private final int units;
+    private final int price;
+    private final Player bidder;
 
+    Bid(int units, int price, Player bidder) {
+        this.units = units;
+        this.price = price;
+        this.bidder = bidder;
     }
 
+    void accept() {
+        bidder.acceptBid();
+    }
 }

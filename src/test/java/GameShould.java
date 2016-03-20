@@ -1,10 +1,12 @@
 import com.example.etudes.strikeitrich.*;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Collections;
+import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.mockito.Mockito.verify;
@@ -27,14 +29,20 @@ public class GameShould {
     @Mock
     private Bank bank;
 
+    private List<Player> players;
+
+    @Before
+    public void setUp() throws Exception {
+        players = asList(player1, player2);
+    }
+
     @Test
     public void deal_initial_materials_to_each_player() throws Exception {
-        Game game = new Game(gameStarter, turns, asList(player1, player2));
+        Game game = new Game(gameStarter, turns, players);
 
         game.start();
 
-        verify(gameStarter).deal(player1);
-        verify(gameStarter).deal(player2);
+        players.forEach(x -> verify(gameStarter).deal(x));
     }
 
     @Test

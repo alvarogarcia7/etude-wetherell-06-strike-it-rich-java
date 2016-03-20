@@ -69,7 +69,7 @@ public class TurnsShould {
     public void ask_players_about_their_bids() throws Exception {
         newTurn();
 
-        players.stream().forEach(x -> verify(x).obtainBid());
+        players.stream().forEach(x -> verify(x).obtainRawMaterialUnitBid());
     }
 
 

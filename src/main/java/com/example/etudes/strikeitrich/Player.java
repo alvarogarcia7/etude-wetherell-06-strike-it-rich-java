@@ -72,7 +72,7 @@ public class Player {
 
     }
 
-    Bid obtainBid() {
+    Bid obtainRawMaterialUnitBid() {
         return null;
     }
 }

@@ -19,6 +19,6 @@ public class Turns {
         players.forEach(Player::payFixedExpenses);
         players.forEach(x -> x.rawMaterialUnits(bank.rawMaterialUnitConditions()));
         players.forEach(x -> x.finishedInventoryUnits(bank.finishedInventoryUserConditions()));
-        players.forEach(Player::obtainBid);
+        players.forEach(Player::obtainRawMaterialUnitBid);
     }
 }

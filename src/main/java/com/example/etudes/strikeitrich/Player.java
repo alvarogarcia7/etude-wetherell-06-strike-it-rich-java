@@ -75,4 +75,8 @@ public class Player {
     Bid obtainRawMaterialUnitBid() {
         return null;
     }
+
+    public void acceptBid() {
+
+    }
 }

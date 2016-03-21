@@ -1,8 +1,6 @@
 package com.example.etudes.strikeitrich;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -22,31 +20,33 @@ public class PlayerShould {
 
         @Test
         public void when_zero_units() throws Exception {
-            Player player = new Player(ANY, ZERO, ANY, INITIAL_CASH);
-
-            player.payFixedExpenses();
-
-            assertThat(player, is(new Player(ANY, ZERO, ANY, INITIAL_CASH)));
+            assertThatPayingFor(ZERO).reducesTheCash();
         }
-
 
         @Test
         public void when_one_unit() throws Exception {
-            Player player = new Player(ANY, ONE, ANY, INITIAL_CASH);
-
-            player.payFixedExpenses();
-
-            assertThat(player, is(new Player(ANY, ONE, ANY, INITIAL_CASH - ONE * EACH_UNIT_PRICE)));
+            assertThatPayingFor(ONE).reducesTheCash();
         }
-
 
         @Test
         public void when_many_units() throws Exception {
-            Player player = new Player(ANY, MANY, ANY, INITIAL_CASH);
+            assertThatPayingFor(MANY).reducesTheCash();
+        }
+
+
+        private PayingStub assertThatPayingFor(int numberOfUnits) {
+            Player player = new Player(ANY, numberOfUnits, ANY, INITIAL_CASH);
 
             player.payFixedExpenses();
 
-            assertThat(player, is(new Player(ANY, MANY, ANY, INITIAL_CASH - MANY * EACH_UNIT_PRICE)));
+            assertThat(player, is(new Player(ANY, numberOfUnits, ANY, INITIAL_CASH - numberOfUnits * EACH_UNIT_PRICE)));
+
+            return new PayingStub();
+        }
+    }
+
+    private static class PayingStub {
+        void reducesTheCash() {
         }
     }
 }

@@ -10,7 +10,6 @@ import static org.junit.Assert.assertThat;
 public class PlayerShould {
 
     private static final int ZERO = 0;
-    private static final int ONE = 1;
     private static final int MANY = 3;
     private static final int ANY = 0;
     private MaterialsCalculator calculator;
@@ -21,7 +20,7 @@ public class PlayerShould {
     }
 
 
-    public class Pay_for_each_RawMaterialUnit {
+    public class Pay_for_each_RawMaterialUnit implements CashModifier {
 
         private static final int EACH_UNIT_PRICE = 300;
         private static final int INITIAL_CASH = 10_000;
@@ -32,21 +31,16 @@ public class PlayerShould {
         }
 
         @Test
-        public void when_one_unit() throws Exception {
-            assertThatPayingFor(ONE).reducesTheCash();
-        }
-
-        @Test
         public void when_many_units() throws Exception {
             assertThatPayingFor(MANY).reducesTheCash();
         }
 
         private PayingStub assertThatPayingFor(int numberOfUnits) {
-            Player player = new Player(ANY, numberOfUnits, ANY, INITIAL_CASH);
+            Player player = buildSut(numberOfUnits, INITIAL_CASH);
 
             player.payFixedExpenses(calculator);
 
-            assertThat(player, is(new Player(ANY, numberOfUnits, ANY, INITIAL_CASH - numberOfUnits * EACH_UNIT_PRICE)));
+            assertThat(player, is(buildSutMinusUnits(numberOfUnits, INITIAL_CASH - numberOfUnits * EACH_UNIT_PRICE)));
 
             return new PayingStub();
         }
@@ -64,11 +58,6 @@ public class PlayerShould {
         }
 
         @Test
-        public void when_one_unit() throws Exception {
-            assertThatPayingFor(ONE).reducesTheCash();
-        }
-
-        @Test
         public void when_many_units() throws Exception {
             assertThatPayingFor(MANY).reducesTheCash();
         }
@@ -78,7 +67,7 @@ public class PlayerShould {
 
             player.payFixedExpenses(calculator);
 
-            assertThat(player, is(new Player(ANY, ANY, numberOfUnits, INITIAL_CASH - numberOfUnits * EACH_UNIT_PRICE)));
+            assertThat(player, is(new Player(ANY, ANY, numberOfUnits, INITIAL_CASH)));
 
             return new PayingStub();
         }

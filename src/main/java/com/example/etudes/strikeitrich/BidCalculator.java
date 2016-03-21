@@ -25,7 +25,7 @@ class BidCalculator {
 
         for (Bid bid : matchingBids) {
             if (bid.requestedUpTo(units)) {
-                units = bid.updateRemainingUnits(units);
+                units = bid.takeYoursFrom(units);
                 bid.accept();
             }
         }

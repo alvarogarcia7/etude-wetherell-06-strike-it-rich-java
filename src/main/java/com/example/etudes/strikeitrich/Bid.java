@@ -27,7 +27,7 @@ class Bid {
         return availableUnits >= units;
     }
 
-    int updateRemainingUnits(int availableUnits) {
+    int takeYoursFrom(int availableUnits) {
         return availableUnits - units;
     }
 

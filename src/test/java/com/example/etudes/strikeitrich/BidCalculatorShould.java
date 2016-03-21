@@ -15,6 +15,8 @@ public class BidCalculatorShould {
 
     @Mock
     private Player player;
+    @Mock
+    private Player player2;
 
     @Test
     public void accept_the_bid_that_is_over_the_minimum() throws Exception {
@@ -40,6 +42,16 @@ public class BidCalculatorShould {
                 new Bid(-1, 4_000, player));
 
         verify(player, times(0)).acceptBid();
+    }
+
+    @Test
+    public void distribute_the_available_units_in_order() throws Exception {
+
+        distributeBids(new Bid(3, 4_000, player),
+                new Bid(3, 3_500, player2));
+
+        verify(player).acceptBid();
+        verify(player2, times(0)).acceptBid();
     }
 
     private void distributeBids(Bid... bids) {

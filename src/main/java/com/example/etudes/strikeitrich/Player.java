@@ -2,6 +2,7 @@ package com.example.etudes.strikeitrich;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Player {
 
@@ -76,5 +77,15 @@ public class Player {
 
     void acceptBid() {
 
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("standardFactories", standardFactories)
+                .append("rawMaterialUnits", rawMaterialUnits)
+                .append("finishedInventoryUnits", finishedInventoryUnits)
+                .append("cash", cash)
+                .toString();
     }
 }

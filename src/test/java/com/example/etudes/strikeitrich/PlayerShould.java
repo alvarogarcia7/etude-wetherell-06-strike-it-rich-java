@@ -35,5 +35,15 @@ public class PlayerShould {
 
             assertThat(player, is(new Player(ANY, ONE, ANY, 10_000 - ONE * 300)));
         }
+
+
+        @Test
+        public void when_many_units() throws Exception {
+            Player player = new Player(ANY, MANY, ANY, 10_000);
+
+            player.payFixedExpenses();
+
+            assertThat(player, is(new Player(ANY, MANY, ANY, 10_000 - MANY * 300)));
+        }
     }
 }

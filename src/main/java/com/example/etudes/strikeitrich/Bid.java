@@ -14,4 +14,8 @@ class Bid {
     void accept() {
         bidder.acceptBid();
     }
+
+    boolean isAtLeast(int minimumPrice) {
+        return price >= minimumPrice;
+    }
 }

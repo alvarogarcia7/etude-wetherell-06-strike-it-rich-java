@@ -19,7 +19,7 @@ public class BidCalculatorShould {
     private Player player2;
 
     @Test
-    public void accept_the_bid_that_is_over_the_minimum() throws Exception {
+    public void accept_the_bid_that_is_at_least_the_minimum() throws Exception {
 
         distributeBids(new Bid(3, 3_000, player));
 

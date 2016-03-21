@@ -21,10 +21,10 @@ class BidCalculator {
 
         int units = this.units;
 
-        for (Bid current : matchingBids) {
-            if (current.requestedUpTo(units)) {
-                units = current.updateRemainingUnits(units);
-                current.accept();
+        for (Bid bid : matchingBids) {
+            if (bid.requestedUpTo(units)) {
+                units = bid.updateRemainingUnits(units);
+                bid.accept();
             }
         }
     }

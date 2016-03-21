@@ -1,6 +1,7 @@
 package com.example.etudes.strikeitrich;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 class BidCalculator {
     private final int units;
@@ -14,10 +15,18 @@ class BidCalculator {
     }
 
     void distribute() {
-        bids.stream()
+        List<Bid> matchingBids = bids.stream()
                 .filter(x -> x.isAtLeast(minimumPrice))
-                .filter(Bid::hasSomeUnits)
-                .forEach(Bid::accept);
+                .filter(Bid::hasSomeUnits).collect(Collectors.toList());
+
+        int units = this.units;
+
+        for (Bid current : matchingBids) {
+            if (current.requestedUpTo(units)) {
+                units = current.updateRemainingUnits(units);
+                current.accept();
+            }
+        }
     }
 
 

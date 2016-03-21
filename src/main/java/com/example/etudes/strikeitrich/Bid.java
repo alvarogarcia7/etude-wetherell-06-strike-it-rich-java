@@ -22,4 +22,12 @@ class Bid {
     boolean hasSomeUnits() {
         return units > 0;
     }
+
+    boolean requestedUpTo(int availableUnits) {
+        return availableUnits >= units;
+    }
+
+    int updateRemainingUnits(int availableUnits) {
+        return availableUnits - units;
+    }
 }

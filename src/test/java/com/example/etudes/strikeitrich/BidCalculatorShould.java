@@ -45,7 +45,7 @@ public class BidCalculatorShould {
     }
 
     @Test
-    public void distribute_the_available_units_in_order() throws Exception {
+    public void distribute_the_available_units_while_they_last() throws Exception {
 
         distributeBids(new Bid(3, 4_000, player),
                 new Bid(3, 3_500, player2));

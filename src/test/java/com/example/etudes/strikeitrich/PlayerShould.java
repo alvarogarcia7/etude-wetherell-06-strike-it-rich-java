@@ -18,34 +18,35 @@ public class PlayerShould {
     public static class Pay_for_each_RawMaterialUnit {
 
         private static final int EACH_UNIT_PRICE = 300;
+        private static final int INITIAL_CASH = 10_000;
 
         @Test
         public void when_zero_units() throws Exception {
-            Player player = new Player(ANY, ZERO, ANY, 10_000);
+            Player player = new Player(ANY, ZERO, ANY, INITIAL_CASH);
 
             player.payFixedExpenses();
 
-            assertThat(player, is(new Player(ANY, ZERO, ANY, 10_000)));
+            assertThat(player, is(new Player(ANY, ZERO, ANY, INITIAL_CASH)));
         }
 
 
         @Test
         public void when_one_unit() throws Exception {
-            Player player = new Player(ANY, ONE, ANY, 10_000);
+            Player player = new Player(ANY, ONE, ANY, INITIAL_CASH);
 
             player.payFixedExpenses();
 
-            assertThat(player, is(new Player(ANY, ONE, ANY, 10_000 - ONE * EACH_UNIT_PRICE)));
+            assertThat(player, is(new Player(ANY, ONE, ANY, INITIAL_CASH - ONE * EACH_UNIT_PRICE)));
         }
 
 
         @Test
         public void when_many_units() throws Exception {
-            Player player = new Player(ANY, MANY, ANY, 10_000);
+            Player player = new Player(ANY, MANY, ANY, INITIAL_CASH);
 
             player.payFixedExpenses();
 
-            assertThat(player, is(new Player(ANY, MANY, ANY, 10_000 - MANY * EACH_UNIT_PRICE)));
+            assertThat(player, is(new Player(ANY, MANY, ANY, INITIAL_CASH - MANY * EACH_UNIT_PRICE)));
         }
     }
 }

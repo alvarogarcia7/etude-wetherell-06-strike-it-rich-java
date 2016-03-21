@@ -21,7 +21,7 @@ public class BidCalculatorShould {
     private static final int HIGHER_THAN_THE_PRICE = 3_500;
 
     @Mock
-    private Player player;
+    private Player player1;
     @Mock
     private Player player2;
 
@@ -33,36 +33,37 @@ public class BidCalculatorShould {
     @Test
     public void accept_the_bid_that_is_at_least_the_minimum() throws Exception {
 
-        distributeBids(new Bid(3, EXACT_PRICE, player));
+        distributeBids(new Bid(3, EXACT_PRICE, player1));
 
-        verify(player).acceptBid();
+        verify(player1).acceptBid();
     }
 
     @Test
     public void do_not_accept_bid_below_the_minimum() throws Exception {
 
-        distributeBids(new Bid(1, BELOW_THE_PRICE, player));
+        distributeBids(new Bid(1, BELOW_THE_PRICE, player1));
 
-        verify(player, times(0)).acceptBid();
+        verify(player1, times(0)).acceptBid();
     }
 
     @Test
     public void only_accept_bids_with_positive_requested_units() throws Exception {
 
-        distributeBids(new Bid(0, HIGHEST_THAN_THE_PRICE, player),
-                new Bid(-1, HIGHEST_THAN_THE_PRICE, player));
+        distributeBids(new Bid(0, HIGHEST_THAN_THE_PRICE, player1),
+                new Bid(-1, HIGHEST_THAN_THE_PRICE, player2));
 
-        verify(player, times(0)).acceptBid();
+        verify(player1, times(0)).acceptBid();
+        verify(player2, times(0)).acceptBid();
     }
 
 
     @Test
     public void distribute_the_available_units_while_they_last() throws Exception {
 
-        distributeBids(new Bid(3, HIGHEST_THAN_THE_PRICE, player),
+        distributeBids(new Bid(3, HIGHEST_THAN_THE_PRICE, player1),
                 new Bid(3, HIGHER_THAN_THE_PRICE, player2));
 
-        verify(player).acceptBid();
+        verify(player1).acceptBid();
         verify(player2, times(0)).acceptBid();
     }
 

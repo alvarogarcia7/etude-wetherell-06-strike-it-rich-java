@@ -14,6 +14,11 @@ class BidCalculator {
     }
 
     void distribute() {
-        bids.stream().filter(x -> x.isAtLeast(minimumPrice)).forEach(Bid::accept);
+        bids.stream()
+                .filter(x -> x.isAtLeast(minimumPrice))
+                .filter(Bid::hasSomeUnits)
+                .forEach(Bid::accept);
     }
+
+
 }

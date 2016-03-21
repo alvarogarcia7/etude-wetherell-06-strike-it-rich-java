@@ -18,4 +18,8 @@ class Bid {
     boolean isAtLeast(int minimumPrice) {
         return price >= minimumPrice;
     }
+
+    boolean hasSomeUnits() {
+        return units > 0;
+    }
 }

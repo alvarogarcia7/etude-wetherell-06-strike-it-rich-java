@@ -3,7 +3,7 @@ package com.example.etudes.strikeitrich;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class PlayerShould {
 
@@ -32,7 +32,6 @@ public class PlayerShould {
         public void when_many_units() throws Exception {
             assertThatPayingFor(MANY).reducesTheCash();
         }
-
 
         private PayingStub assertThatPayingFor(int numberOfUnits) {
             Player player = new Player(ANY, numberOfUnits, ANY, INITIAL_CASH);

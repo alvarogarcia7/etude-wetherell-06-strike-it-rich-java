@@ -7,8 +7,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Arrays;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 

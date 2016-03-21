@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class Pay_for_each_FinishedInventoryUnit {
+public class FinishedInventoryUnitFixedExpensesShould {
 
     private static final int ZERO = 0;
     private static final int MANY = 3;

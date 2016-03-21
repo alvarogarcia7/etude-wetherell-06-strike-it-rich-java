@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class Pay_for_each_RawMaterialUnit {
+public class RawMaterialUnitFixedExpensesShould {
 
     private static final int ZERO = 0;
     private static final int MANY = 3;

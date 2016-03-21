@@ -17,6 +17,8 @@ public class PlayerShould {
 
     public static class Pay_for_each_RawMaterialUnit {
 
+        private static final int EACH_UNIT_PRICE = 300;
+
         @Test
         public void when_zero_units() throws Exception {
             Player player = new Player(ANY, ZERO, ANY, 10_000);
@@ -33,7 +35,7 @@ public class PlayerShould {
 
             player.payFixedExpenses();
 
-            assertThat(player, is(new Player(ANY, ONE, ANY, 10_000 - ONE * 300)));
+            assertThat(player, is(new Player(ANY, ONE, ANY, 10_000 - ONE * EACH_UNIT_PRICE)));
         }
 
 
@@ -43,7 +45,7 @@ public class PlayerShould {
 
             player.payFixedExpenses();
 
-            assertThat(player, is(new Player(ANY, MANY, ANY, 10_000 - MANY * 300)));
+            assertThat(player, is(new Player(ANY, MANY, ANY, 10_000 - MANY * EACH_UNIT_PRICE)));
         }
     }
 }

@@ -47,4 +47,14 @@ public class BidCalculatorShould {
     }
 
 
+    @Test
+    public void do_not_accept_bid_with_zero_requested_units() throws Exception {
+        List<Bid> bids = Arrays.asList(new Bid(0, 4_000, player));
+
+        new BidCalculator(3, 3_000, bids).distribute();
+
+        verify(player, times(0)).acceptBid();
+    }
+
+
 }

@@ -35,7 +35,7 @@ public class BidCalculatorShould {
 
         distributeBids(new Bid(3, EXACT_PRICE, player1));
 
-        verify(player1).acceptBid();
+        acceptBidFor(this.player1);
     }
 
     @Test
@@ -43,7 +43,8 @@ public class BidCalculatorShould {
 
         distributeBids(new Bid(1, BELOW_THE_PRICE, player1));
 
-        verify(player1, times(0)).acceptBid();
+        Player player1 = this.player1;
+        dontAcceptBidFor(player1);
     }
 
     @Test
@@ -52,10 +53,9 @@ public class BidCalculatorShould {
         distributeBids(new Bid(0, HIGHEST_THAN_THE_PRICE, player1),
                 new Bid(-1, HIGHEST_THAN_THE_PRICE, player2));
 
-        verify(player1, times(0)).acceptBid();
-        verify(player2, times(0)).acceptBid();
+        dontAcceptBidFor(player1);
+        dontAcceptBidFor(player2);
     }
-
 
     @Test
     public void distribute_the_available_units_while_they_last() throws Exception {
@@ -63,12 +63,21 @@ public class BidCalculatorShould {
         distributeBids(new Bid(3, HIGHEST_THAN_THE_PRICE, player1),
                 new Bid(3, HIGHER_THAN_THE_PRICE, player2));
 
-        verify(player1).acceptBid();
-        verify(player2, times(0)).acceptBid();
+        acceptBidFor(player1);
+        dontAcceptBidFor(player2);
     }
+
 
     private void distributeBids(Bid... bids) {
         new BidCalculator(3, EXACT_PRICE, Arrays.asList(bids)).distribute();
+    }
+
+    private void acceptBidFor(Player player) {
+        verify(player).acceptBid();
+    }
+
+    private void dontAcceptBidFor(Player player) {
+        verify(player, times(0)).acceptBid();
     }
 
     private void checkConstantConfiguration() {
@@ -76,6 +85,4 @@ public class BidCalculatorShould {
         assertTrue(EXACT_PRICE < HIGHER_THAN_THE_PRICE);
         assertTrue(HIGHER_THAN_THE_PRICE < HIGHEST_THAN_THE_PRICE);
     }
-
-
 }

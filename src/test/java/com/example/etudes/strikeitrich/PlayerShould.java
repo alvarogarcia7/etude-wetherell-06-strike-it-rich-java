@@ -36,7 +36,7 @@ public class PlayerShould {
         private PayingStub assertThatPayingFor(int numberOfUnits) {
             Player player = new Player(ANY, numberOfUnits, ANY, INITIAL_CASH);
 
-            player.payFixedExpenses();
+            player.payFixedExpenses(MaterialsCalculator.defaultPrices());
 
             assertThat(player, is(new Player(ANY, numberOfUnits, ANY, INITIAL_CASH - numberOfUnits * EACH_UNIT_PRICE)));
 
@@ -68,7 +68,7 @@ public class PlayerShould {
         private PayingStub assertThatPayingFor(int numberOfUnits) {
             Player player = new Player(ANY, ANY, numberOfUnits, INITIAL_CASH);
 
-            player.payFixedExpenses();
+            player.payFixedExpenses(MaterialsCalculator.defaultPrices());
 
             assertThat(player, is(new Player(ANY, ANY, numberOfUnits, INITIAL_CASH - numberOfUnits * EACH_UNIT_PRICE)));
 

@@ -28,18 +28,20 @@ public class TurnsShould {
     Condition condition;
     private Turns turns;
     private List<Player> players;
+    @Mock
+    private MaterialsCalculator materialCalculator;
 
     @Before
     public void setUp() throws Exception {
         players = Arrays.asList(player1, player2);
-        turns = Turns.aNew(players, bank);
+        turns = Turns.aNew(players, bank, materialCalculator);
     }
 
     @Test
     public void pay_fixed_expenses() throws Exception {
         newTurn();
 
-        players.stream().forEach(x -> verify(x).payFixedExpenses());
+        players.stream().forEach(x -> verify(x).payFixedExpenses(materialCalculator));
     }
 
     private void newTurn() {

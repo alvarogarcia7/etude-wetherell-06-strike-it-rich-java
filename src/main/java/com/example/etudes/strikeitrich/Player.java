@@ -60,12 +60,12 @@ public class Player {
                 .toHashCode();
     }
 
-    void payFixedExpenses() {
-        pay(300 * rawMaterialUnits);
-        pay(500 * finishedInventoryUnits);
+    void payFixedExpenses(MaterialsCalculator calculator) {
+        calculator.calculateRawMaterials(rawMaterialUnits, this);
+        calculator.calculateFinishedInventoryUnits(finishedInventoryUnits, this);
     }
 
-    private void pay(int amount) {
+    void pay(int amount) {
         cash -= amount;
     }
 

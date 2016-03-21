@@ -35,7 +35,7 @@ public class BidCalculatorShould {
 
         distributeBids(new Bid(3, EXACT_PRICE, player1));
 
-        acceptBidFor(this.player1);
+        acceptBidFor(player1);
     }
 
     @Test
@@ -43,7 +43,6 @@ public class BidCalculatorShould {
 
         distributeBids(new Bid(1, BELOW_THE_PRICE, player1));
 
-        Player player1 = this.player1;
         dontAcceptBidFor(player1);
     }
 

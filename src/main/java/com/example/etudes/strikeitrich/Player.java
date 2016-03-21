@@ -62,6 +62,7 @@ public class Player {
 
     void payFixedExpenses() {
         pay(300 * rawMaterialUnits);
+        pay(500 * finishedInventoryUnits);
     }
 
     private void pay(int amount) {

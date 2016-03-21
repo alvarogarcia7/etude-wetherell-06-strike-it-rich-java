@@ -48,7 +48,7 @@ public class BidCalculatorShould {
 
 
     @Test
-    public void do_not_accept_bid_with_zero_or_negative_requested_units() throws Exception {
+    public void only_accept_bids_with_positive_requested_units() throws Exception {
         List<Bid> bids = Arrays.asList(
                 new Bid(0, 4_000, player),
                 new Bid(-1, 4_000, player));

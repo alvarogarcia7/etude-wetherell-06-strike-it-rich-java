@@ -12,6 +12,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -34,6 +35,15 @@ public class BidCalculatorShould {
         new BidCalculator(3, 3_000, bids).distribute();
 
         verify(player).acceptBid();
+    }
+
+    @Test
+    public void do_not_accept_bid_below_the_minimum() throws Exception {
+        List<Bid> bids = Arrays.asList(new Bid(1, 2_000, player));
+
+        new BidCalculator(3, 3_000, bids).distribute();
+
+        verify(player, times(0)).acceptBid();
     }
 
 

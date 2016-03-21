@@ -61,10 +61,7 @@ public class Player {
     }
 
     void payFixedExpenses() {
-        if (1 == rawMaterialUnits) {
-            pay(300);
-        }
-
+        pay(300 * rawMaterialUnits);
     }
 
     private void pay(int amount) {

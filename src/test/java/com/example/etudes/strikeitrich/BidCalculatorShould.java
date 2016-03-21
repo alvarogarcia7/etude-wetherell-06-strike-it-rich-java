@@ -71,7 +71,7 @@ public class BidCalculatorShould {
     public void first_units_go_to_highest_bidders() throws Exception {
 
         distributeBids(new Bid(3, HIGHER_THAN_THE_PRICE, player1),
-                new Bid(3, HIGHER_THAN_THE_PRICE, player2));
+                new Bid(3, HIGHEST_THAN_THE_PRICE, player2));
 
         dontAcceptBidFor(player1);
         acceptBidFor(player2);

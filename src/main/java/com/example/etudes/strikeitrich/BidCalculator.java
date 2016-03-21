@@ -17,7 +17,9 @@ class BidCalculator {
     void distribute() {
         List<Bid> matchingBids = bids.stream()
                 .filter(x -> x.isAtLeast(minimumPrice))
-                .filter(Bid::hasSomeUnits).collect(Collectors.toList());
+                .filter(Bid::hasSomeUnits)
+                .sorted(Bid::descendingPrice)
+                .collect(Collectors.toList());
 
         int units = this.units;
 

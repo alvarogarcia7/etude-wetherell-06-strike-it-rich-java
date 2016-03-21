@@ -74,7 +74,7 @@ public class Player {
         return null;
     }
 
-    public void acceptBid() {
+    void acceptBid() {
 
     }
 }

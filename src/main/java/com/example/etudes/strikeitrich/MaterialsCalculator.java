@@ -22,8 +22,7 @@ class MaterialsCalculator {
     }
 
     static MaterialsCalculator defaultPrices() {
-        Map<CostType, Cost> values = CostType.defaultValues();
-        return new MaterialsCalculator(values);
+        return new MaterialsCalculator(CostType.defaultValues());
     }
 
     void calculateRawMaterials(int units, Player player) {

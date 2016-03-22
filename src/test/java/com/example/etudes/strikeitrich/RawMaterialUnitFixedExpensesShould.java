@@ -20,8 +20,4 @@ public class RawMaterialUnitFixedExpensesShould extends FixedExpensesShould {
         return new Player(0, units, 0, cash);
     }
 
-    private Player buildSutMinusUnits(int numberOfUnits, int cash) {
-        return new Player(0, numberOfUnits, 0, cash - EACH_UNIT_PRICE * numberOfUnits);
-    }
-
 }

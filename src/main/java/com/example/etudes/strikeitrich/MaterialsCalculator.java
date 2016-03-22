@@ -5,6 +5,8 @@ import javafx.util.Builder;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.etudes.strikeitrich.CostType.*;
+
 class MaterialsCalculator {
 
     private final int standardFactoryPrice;
@@ -12,9 +14,9 @@ class MaterialsCalculator {
     private final int finishedInventoryUnitPrice;
 
     private MaterialsCalculator(Map<CostType, Cost> costs) {
-        this.standardFactoryPrice = getOrDefaultOf(CostType.STANDARD_FACTORY, costs);
-        this.rawMaterialUnitPrice = getOrDefaultOf(CostType.RAW_MATERIAL, costs);
-        this.finishedInventoryUnitPrice = getOrDefaultOf(CostType.FINISHED_UNIT, costs);
+        this.standardFactoryPrice = getOrDefaultOf(STANDARD_FACTORY, costs);
+        this.rawMaterialUnitPrice = getOrDefaultOf(RAW_MATERIAL, costs);
+        this.finishedInventoryUnitPrice = getOrDefaultOf(FINISHED_UNIT, costs);
     }
 
     private int getOrDefaultOf(CostType type, Map<CostType, Cost> costs) {
@@ -22,7 +24,7 @@ class MaterialsCalculator {
     }
 
     static MaterialsCalculator defaultPrices() {
-        return new MaterialsCalculator(CostType.defaultValues());
+        return new MaterialsCalculator(defaultValues());
     }
 
     void calculateRawMaterials(int units, Player player) {
@@ -51,12 +53,12 @@ class MaterialsCalculator {
         }
 
         MaterialsCalculatorBuilder rawMaterialCosts(int pricePerUnit) {
-            values.put(CostType.RAW_MATERIAL, Cost.of(pricePerUnit));
+            values.put(RAW_MATERIAL, Cost.of(pricePerUnit));
             return this;
         }
 
         MaterialsCalculatorBuilder finishedInventoryCosts(int pricePerUnit) {
-            values.put(CostType.FINISHED_UNIT, Cost.of(pricePerUnit));
+            values.put(FINISHED_UNIT, Cost.of(pricePerUnit));
             return this;
         }
     }

@@ -5,6 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RawMaterialUnitFixedExpensesShould extends FixedExpensesShould {
 
+    private static final int ANY = 0;
     private static MaterialsCalculator calculator;
 
     private static final int EACH_UNIT_PRICE = 300;
@@ -17,7 +18,7 @@ public class RawMaterialUnitFixedExpensesShould extends FixedExpensesShould {
 
     @Override
     protected Player playerWith(int units, int cash) {
-        return new Player(0, units, 0, cash);
+        return new Player(ANY, units, ANY, cash);
     }
 
 }

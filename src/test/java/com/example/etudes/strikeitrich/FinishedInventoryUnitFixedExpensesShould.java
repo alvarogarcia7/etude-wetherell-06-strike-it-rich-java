@@ -10,10 +10,7 @@ public class FinishedInventoryUnitFixedExpensesShould extends FixedExpensesShoul
 
     @Override
     protected MaterialsCalculator getCalculator() {
-        final int standardFactoryPrice = 0;
-        final int rawMaterialPrice = 0;
-        final int finishedInventoryUnitPrice = PRICE_PER_UNIT;
-        return new MaterialsCalculator(standardFactoryPrice, rawMaterialPrice, finishedInventoryUnitPrice);
+        return MaterialsCalculator.defaultPricesAnd().finishedInventoryCosts(PRICE_PER_UNIT).build();
     }
 
     @Override

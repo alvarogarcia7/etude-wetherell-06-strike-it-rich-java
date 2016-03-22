@@ -7,10 +7,8 @@ public class RawMaterialUnitFixedExpensesShould extends FixedExpensesShould {
 
     @Override
     protected MaterialsCalculator getCalculator() {
-        int finishedInventoryUnits = ANY;
         int rawMaterialUnits = PRICE_PER_UNIT;
-        int standardFactories = ANY;
-        return new MaterialsCalculator(standardFactories, rawMaterialUnits, finishedInventoryUnits);
+        return MaterialsCalculator.defaultPricesAnd().rawMaterialCosts(PRICE_PER_UNIT).build();
     }
 
     @Override

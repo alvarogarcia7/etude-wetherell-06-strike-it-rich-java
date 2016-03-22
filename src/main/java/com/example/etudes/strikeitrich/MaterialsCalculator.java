@@ -38,6 +38,10 @@ class MaterialsCalculator {
         return new MaterialsCalculatorBuilder(CostType.defaultValues());
     }
 
+    void calculateStandardFactories(int units, Player player) {
+        player.pay(units * standardFactoryPrice);
+    }
+
     static class MaterialsCalculatorBuilder implements Builder<MaterialsCalculator> {
 
         private Map<CostType, Cost> values;

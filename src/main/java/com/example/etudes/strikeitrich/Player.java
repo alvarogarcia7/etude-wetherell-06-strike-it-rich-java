@@ -63,6 +63,7 @@ public class Player {
     void payFixedExpenses(MaterialsCalculator calculator) {
         calculator.calculateRawMaterials(rawMaterialUnits, this);
         calculator.calculateFinishedInventoryUnits(finishedInventoryUnits, this);
+        calculator.calculateStandardFactories(standardFactories, this);
     }
 
     void pay(int amount) {

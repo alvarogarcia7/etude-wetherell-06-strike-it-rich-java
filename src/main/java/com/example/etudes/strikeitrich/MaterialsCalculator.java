@@ -39,7 +39,7 @@ class MaterialsCalculator {
     static class MaterialsCalculatorBuilder implements Builder<MaterialsCalculator> {
 
         private static final String RAW_MATERIAL_COSTS = "RAW_MATERIAL_COSTS";
-        static final String FINISHED_INVENTORY_COSTS = "FINISHED_INVENTORY_COSTS";
+        private static final String FINISHED_INVENTORY_COSTS = "FINISHED_INVENTORY_COSTS";
         private Map<String, Integer> values;
 
         MaterialsCalculatorBuilder() {

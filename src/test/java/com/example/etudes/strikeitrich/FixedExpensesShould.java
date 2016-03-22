@@ -1,6 +1,5 @@
 package com.example.etudes.strikeitrich;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;

@@ -2,7 +2,6 @@ package com.example.etudes.strikeitrich;
 
 import javafx.util.Builder;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static com.example.etudes.strikeitrich.CostType.*;

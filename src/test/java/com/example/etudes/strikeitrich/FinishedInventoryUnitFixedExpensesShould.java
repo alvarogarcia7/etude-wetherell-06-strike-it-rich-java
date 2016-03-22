@@ -1,8 +1,5 @@
 package com.example.etudes.strikeitrich;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
 public class FinishedInventoryUnitFixedExpensesShould extends FixedExpensesShould {
 
     private static final int ANY = 0;

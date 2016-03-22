@@ -44,7 +44,7 @@ class MaterialsCalculator {
         private Map<CostType, Cost> values;
 
         MaterialsCalculatorBuilder() {
-            this.values = new HashMap<>();
+            this.values = CostType.defaultValues();
         }
 
         @Override

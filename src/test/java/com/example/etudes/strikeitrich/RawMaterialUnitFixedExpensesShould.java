@@ -1,9 +1,5 @@
 package com.example.etudes.strikeitrich;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mockito;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -11,30 +7,21 @@ public class RawMaterialUnitFixedExpensesShould extends FixedExpensesShould {
 
     private static MaterialsCalculator calculator;
 
-    @Before
-    public void setUp() {
-        calculator = MaterialsCalculator.defaultPrices();
-    }
-
     private static final int EACH_UNIT_PRICE = 300;
     private static final int INITIAL_CASH = 10_000;
 
     @Override
-    protected PayingStub assertThatPayingFor(int numberOfUnits) {
-        Player player = buildSut(numberOfUnits, INITIAL_CASH);
+    protected int priceUnit() {
+        return EACH_UNIT_PRICE;
+    }
 
-        player.payFixedExpenses(calculator);
-
-        assertThat(player, is(buildSutMinusUnits(numberOfUnits, INITIAL_CASH)));
-
-        return new PayingStub();
+    @Override
+    protected Player playerWith(int units, int cash) {
+        return new Player(0, units, 0, cash);
     }
 
     private Player buildSutMinusUnits(int numberOfUnits, int cash) {
-        return buildSut(numberOfUnits, cash - EACH_UNIT_PRICE * numberOfUnits);
+        return new Player(0, numberOfUnits, 0, cash - EACH_UNIT_PRICE * numberOfUnits);
     }
 
-    private Player buildSut(int numberOfUnits, int initialCash) {
-        return new Player(0, numberOfUnits, 0, initialCash);
-    }
 }

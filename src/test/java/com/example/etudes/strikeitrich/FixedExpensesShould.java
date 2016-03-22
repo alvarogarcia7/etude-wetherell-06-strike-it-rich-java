@@ -11,12 +11,6 @@ public abstract class FixedExpensesShould {
     private static final int INITIAL_CASH = 10_000;
     private static final int ZERO = 0;
     private static final int MANY = 3;
-    private MaterialsCalculator calculator;
-
-    @Before
-    public void setUp() {
-        calculator = MaterialsCalculator.defaultPrices();
-    }
 
     @Test
     public void when_zero_units() throws Exception {
@@ -31,7 +25,7 @@ public abstract class FixedExpensesShould {
     private PayingStub assertThatPayingFor(int numberOfUnits) {
         Player player = playerWithInitialCashAnd(numberOfUnits);
 
-        player.payFixedExpenses(calculator);
+        player.payFixedExpenses(getCalculator());
 
         assertThat(player, is(playerWithReducedCashAnd(numberOfUnits)));
 
@@ -49,6 +43,8 @@ public abstract class FixedExpensesShould {
     private int reducedCashBy(int numberOfUnits) {
         return INITIAL_CASH - numberOfUnits * priceUnit();
     }
+
+    protected abstract MaterialsCalculator getCalculator();
 
     protected abstract int priceUnit();
 

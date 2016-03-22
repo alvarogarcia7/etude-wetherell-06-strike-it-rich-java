@@ -1,8 +1,5 @@
 package com.example.etudes.strikeitrich;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class RawMaterialUnitFixedExpensesShould extends FixedExpensesShould {
 
     private static final int ANY = 0;

@@ -1,5 +1,9 @@
 package com.example.etudes.strikeitrich;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 enum CostType {
 
     FINISHED_UNIT(Cost.of(0)),
@@ -10,6 +14,12 @@ enum CostType {
 
     CostType(Cost cost) {
         this.cost = cost;
+    }
+
+    static Map<CostType, Cost> defaultValues() {
+        Map<CostType, Cost> values = new HashMap<>();
+        Arrays.stream(values()).forEach(x -> values.put(x, x.getCost()));
+        return values;
     }
 
     public Cost getCost() {

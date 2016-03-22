@@ -2,7 +2,6 @@ package com.example.etudes.strikeitrich;
 
 import javafx.util.Builder;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,9 +22,7 @@ class MaterialsCalculator {
     }
 
     static MaterialsCalculator defaultPrices() {
-        //TODO move to CostType
-        Map<CostType, Cost> values = new HashMap<>();
-        Arrays.stream(CostType.values()).forEach(x -> values.put(x, x.getCost()));
+        Map<CostType, Cost> values = CostType.defaultValues();
         return new MaterialsCalculator(values);
     }
 

@@ -35,15 +35,15 @@ class MaterialsCalculator {
     }
 
     static MaterialsCalculatorBuilder defaultPricesAnd() {
-        return new MaterialsCalculatorBuilder();
+        return new MaterialsCalculatorBuilder(CostType.defaultValues());
     }
 
     static class MaterialsCalculatorBuilder implements Builder<MaterialsCalculator> {
 
         private Map<CostType, Cost> values;
 
-        MaterialsCalculatorBuilder() {
-            this.values = CostType.defaultValues();
+        MaterialsCalculatorBuilder(Map<CostType, Cost> costTypeCostMap) {
+            this.values = costTypeCostMap;
         }
 
         @Override

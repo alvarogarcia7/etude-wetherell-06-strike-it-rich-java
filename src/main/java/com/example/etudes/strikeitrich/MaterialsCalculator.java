@@ -2,26 +2,31 @@ package com.example.etudes.strikeitrich;
 
 import javafx.util.Builder;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 class MaterialsCalculator {
 
-    private static final int RAW_MATERIAL_UNIT_PRICE = 300;
-    private static final int FINISHED_INVENTORY_UNIT_PRICE = 500;
-
     private final int standardFactoryPrice;
     private final int rawMaterialUnitPrice;
     private final int finishedInventoryUnitPrice;
 
-    private MaterialsCalculator(int standardFactoryPrice, int rawMaterialUnitPrice, int finishedInventoryUnitPrice) {
-        this.standardFactoryPrice = standardFactoryPrice;
-        this.rawMaterialUnitPrice = rawMaterialUnitPrice;
-        this.finishedInventoryUnitPrice = finishedInventoryUnitPrice;
+    private MaterialsCalculator(Map<CostType, Cost> costs) {
+        this.standardFactoryPrice = getOrDefaultOf(CostType.STANDARD_FACTORY, costs);
+        this.rawMaterialUnitPrice = getOrDefaultOf(CostType.RAW_MATERIAL, costs);
+        this.finishedInventoryUnitPrice = getOrDefaultOf(CostType.FINISHED_UNIT, costs);
+    }
+
+    private int getOrDefaultOf(CostType type, Map<CostType, Cost> costs) {
+        return costs.getOrDefault(type, type.getCost()).value();
     }
 
     static MaterialsCalculator defaultPrices() {
-        return new MaterialsCalculator(0, RAW_MATERIAL_UNIT_PRICE, FINISHED_INVENTORY_UNIT_PRICE);
+        //TODO move to CostType
+        Map<CostType, Cost> values = new HashMap<>();
+        Arrays.stream(CostType.values()).forEach(x -> values.put(x, x.getCost()));
+        return new MaterialsCalculator(values);
     }
 
     void calculateRawMaterials(int units, Player player) {
@@ -38,9 +43,7 @@ class MaterialsCalculator {
 
     static class MaterialsCalculatorBuilder implements Builder<MaterialsCalculator> {
 
-        private static final String RAW_MATERIAL_COSTS = "RAW_MATERIAL_COSTS";
-        private static final String FINISHED_INVENTORY_COSTS = "FINISHED_INVENTORY_COSTS";
-        private Map<String, Integer> values;
+        private Map<CostType, Cost> values;
 
         MaterialsCalculatorBuilder() {
             this.values = new HashMap<>();
@@ -48,16 +51,16 @@ class MaterialsCalculator {
 
         @Override
         public MaterialsCalculator build() {
-            return new MaterialsCalculator(0, values.getOrDefault(RAW_MATERIAL_COSTS, 0), values.getOrDefault(FINISHED_INVENTORY_COSTS, 0));
+            return new MaterialsCalculator(values);
         }
 
         MaterialsCalculatorBuilder rawMaterialCosts(int pricePerUnit) {
-            values.put(RAW_MATERIAL_COSTS, pricePerUnit);
+            values.put(CostType.RAW_MATERIAL, Cost.of(pricePerUnit));
             return this;
         }
 
         MaterialsCalculatorBuilder finishedInventoryCosts(int pricePerUnit) {
-            values.put(FINISHED_INVENTORY_COSTS, pricePerUnit);
+            values.put(CostType.FINISHED_UNIT, Cost.of(pricePerUnit));
             return this;
         }
     }

@@ -7,11 +7,9 @@ public class RawMaterialUnitFixedExpensesShould extends FixedExpensesShould {
 
     private static final int ANY = 0;
 
-    private static final int EACH_UNIT_PRICE = 300;
-
     @Override
     protected int priceUnit() {
-        return EACH_UNIT_PRICE;
+        return 300;
     }
 
     @Override

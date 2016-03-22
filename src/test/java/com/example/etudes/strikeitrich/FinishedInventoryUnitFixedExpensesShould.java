@@ -1,7 +1,5 @@
 package com.example.etudes.strikeitrich;
 
-import org.junit.Before;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -11,10 +9,8 @@ public class FinishedInventoryUnitFixedExpensesShould extends FixedExpensesShoul
 
     @Override
     protected int priceUnit() {
-        return EACH_UNIT_PRICE;
+        return 500;
     }
-
-    private static final int EACH_UNIT_PRICE = 500;
 
     @Override
     protected Player playerWith(int numberOfUnits, int cash) {

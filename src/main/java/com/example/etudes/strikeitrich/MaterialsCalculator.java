@@ -60,5 +60,10 @@ class MaterialsCalculator {
             values.put(FINISHED_UNIT, Cost.of(pricePerUnit));
             return this;
         }
+
+        MaterialsCalculatorBuilder standardFactoryCosts(int pricePerUnit) {
+            values.put(STANDARD_FACTORY, Cost.of(pricePerUnit));
+            return this;
+        }
     }
 }

@@ -41,6 +41,7 @@ public class Player {
         calculator.calculateRawMaterials(rawMaterialUnits, this);
         calculator.calculateFinishedInventoryUnits(finishedInventoryUnits, this);
         calculator.calculateStandardFactories(standardFactories, this);
+        calculator.calculateAutomatedFactories(automatedFactoryUnits, this);
     }
 
     void pay(int amount) {

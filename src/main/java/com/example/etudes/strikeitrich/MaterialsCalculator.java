@@ -11,11 +11,13 @@ class MaterialsCalculator {
     private final int standardFactoryPrice;
     private final int rawMaterialUnitPrice;
     private final int finishedInventoryUnitPrice;
+    private final int automatedFactoryPrice;
 
     private MaterialsCalculator(Map<CostType, Cost> costs) {
         this.standardFactoryPrice = getOrDefaultOf(STANDARD_FACTORY, costs);
         this.rawMaterialUnitPrice = getOrDefaultOf(RAW_MATERIAL, costs);
         this.finishedInventoryUnitPrice = getOrDefaultOf(FINISHED_UNIT, costs);
+        this.automatedFactoryPrice = getOrDefaultOf(AUTOMATED_FACTORY, costs);
     }
 
     private int getOrDefaultOf(CostType type, Map<CostType, Cost> costs) {
@@ -40,6 +42,10 @@ class MaterialsCalculator {
 
     void calculateStandardFactories(int units, Player player) {
         player.pay(units * standardFactoryPrice);
+    }
+
+    void calculateAutomatedFactories(int units, Player player) {
+        player.pay(units * automatedFactoryPrice);
     }
 
     static class MaterialsCalculatorBuilder implements Builder<MaterialsCalculator> {

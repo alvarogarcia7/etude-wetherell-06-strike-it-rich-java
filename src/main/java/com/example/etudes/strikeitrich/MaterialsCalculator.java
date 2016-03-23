@@ -6,7 +6,7 @@ import java.util.Map;
 
 import static com.example.etudes.strikeitrich.CostType.*;
 
-class MaterialsCalculator {
+public class MaterialsCalculator {
 
     private final int standardFactoryPrice;
     private final int rawMaterialUnitPrice;
@@ -36,7 +36,7 @@ class MaterialsCalculator {
         player.pay(finishedInventoryUnitPrice * units);
     }
 
-    static MaterialsCalculatorBuilder defaultPricesAnd() {
+    public static MaterialsCalculatorBuilder defaultPricesAnd() {
         return new MaterialsCalculatorBuilder(CostType.defaultValues());
     }
 
@@ -48,7 +48,7 @@ class MaterialsCalculator {
         player.pay(units * automatedFactoryPrice);
     }
 
-    static class MaterialsCalculatorBuilder implements Builder<MaterialsCalculator> {
+    public static class MaterialsCalculatorBuilder implements Builder<MaterialsCalculator> {
 
         private Map<CostType, Cost> values;
 
@@ -61,22 +61,22 @@ class MaterialsCalculator {
             return new MaterialsCalculator(values);
         }
 
-        MaterialsCalculatorBuilder rawMaterialCosts(int pricePerUnit) {
+        public MaterialsCalculatorBuilder rawMaterialCosts(int pricePerUnit) {
             values.put(RAW_MATERIAL, Cost.of(pricePerUnit));
             return this;
         }
 
-        MaterialsCalculatorBuilder finishedInventoryCosts(int pricePerUnit) {
+        public MaterialsCalculatorBuilder finishedInventoryCosts(int pricePerUnit) {
             values.put(FINISHED_UNIT, Cost.of(pricePerUnit));
             return this;
         }
 
-        MaterialsCalculatorBuilder standardFactoryCosts(int pricePerUnit) {
+        public MaterialsCalculatorBuilder standardFactoryCosts(int pricePerUnit) {
             values.put(STANDARD_FACTORY, Cost.of(pricePerUnit));
             return this;
         }
 
-        MaterialsCalculatorBuilder automatedFactoryCosts(int pricePerUnit) {
+        public MaterialsCalculatorBuilder automatedFactoryCosts(int pricePerUnit) {
             values.put(AUTOMATED_FACTORY, Cost.of(pricePerUnit));
             return this;
         }

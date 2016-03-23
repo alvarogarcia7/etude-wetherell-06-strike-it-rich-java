@@ -1,5 +1,6 @@
 package com.example.etudes.strikeitrich;
 
+import com.example.etudes.strikeitrich.fixedExpenses.PayingStub;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;

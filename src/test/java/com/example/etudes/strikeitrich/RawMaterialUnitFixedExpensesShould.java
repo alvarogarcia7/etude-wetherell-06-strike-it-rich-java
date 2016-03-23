@@ -18,7 +18,7 @@ public class RawMaterialUnitFixedExpensesShould extends FixedExpensesShould {
 
     @Override
     protected Player playerWith(int units, int cash) {
-        return new Player(ANY, units, ANY, cash);
+        return new Player(ANY, units, ANY, cash, 0);
     }
 
 }

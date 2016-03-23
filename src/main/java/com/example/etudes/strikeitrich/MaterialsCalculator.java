@@ -69,5 +69,10 @@ class MaterialsCalculator {
             values.put(STANDARD_FACTORY, Cost.of(pricePerUnit));
             return this;
         }
+
+        MaterialsCalculatorBuilder automatedFactoryCosts(int pricePerUnit) {
+            values.put(AUTOMATED_FACTORY, Cost.of(pricePerUnit));
+            return this;
+        }
     }
 }

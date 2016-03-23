@@ -17,7 +17,7 @@ public class FinishedInventoryUnitFixedExpensesShould extends FixedExpensesShoul
 
     @Override
     protected Player playerWith(int numberOfUnits, int cash) {
-        return new Player(ANY, ANY, numberOfUnits, cash);
+        return new Player(ANY, ANY, numberOfUnits, cash, 0);
     }
 
 }

@@ -8,7 +8,8 @@ enum CostType {
 
     FINISHED_UNIT(Cost.of(0)),
     RAW_MATERIAL(Cost.of(500)),
-    STANDARD_FACTORY(Cost.of(300));
+    STANDARD_FACTORY(Cost.of(300)),
+    AUTOMATED_FACTORY(Cost.of(1500)),;
 
     private final Cost cost;
 

@@ -10,12 +10,14 @@ public class Player {
     private int rawMaterialUnits;
     private int finishedInventoryUnits;
     private int cash;
+    private int automatedFactoryUnits;
 
-    Player(int standardFactories, int rawMaterialUnits, int finishedInventoryUnits, int cash) {
+    Player(int standardFactories, int rawMaterialUnits, int finishedInventoryUnits, int cash, int automatedFactoryUnits) {
         this.standardFactories = standardFactories;
         this.rawMaterialUnits = rawMaterialUnits;
         this.finishedInventoryUnits = finishedInventoryUnits;
         this.cash = cash;
+        this.automatedFactoryUnits = automatedFactoryUnits;
     }
 
     void receiveStandardFactories(int amount) {
@@ -34,31 +36,6 @@ public class Player {
         cash += amount;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Player player = (Player) o;
-
-        return new EqualsBuilder()
-                .append(standardFactories, player.standardFactories)
-                .append(rawMaterialUnits, player.rawMaterialUnits)
-                .append(finishedInventoryUnits, player.finishedInventoryUnits)
-                .append(cash, player.cash)
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(standardFactories)
-                .append(rawMaterialUnits)
-                .append(finishedInventoryUnits)
-                .append(cash)
-                .toHashCode();
-    }
 
     void payFixedExpenses(MaterialsCalculator calculator) {
         calculator.calculateRawMaterials(rawMaterialUnits, this);
@@ -93,5 +70,33 @@ public class Player {
                 .append("finishedInventoryUnits", finishedInventoryUnits)
                 .append("cash", cash)
                 .toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Player player = (Player) o;
+
+        return new EqualsBuilder()
+                .append(standardFactories, player.standardFactories)
+                .append(rawMaterialUnits, player.rawMaterialUnits)
+                .append(finishedInventoryUnits, player.finishedInventoryUnits)
+                .append(cash, player.cash)
+                .append(automatedFactoryUnits, player.automatedFactoryUnits)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(standardFactories)
+                .append(rawMaterialUnits)
+                .append(finishedInventoryUnits)
+                .append(cash)
+                .append(automatedFactoryUnits)
+                .toHashCode();
     }
 }

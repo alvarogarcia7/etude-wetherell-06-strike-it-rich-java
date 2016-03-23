@@ -17,7 +17,7 @@ public class StandardFactoryFixedExpensesShould extends FixedExpensesShould {
 
     @Override
     protected Player playerWith(int numberOfUnits, int cash) {
-        return new Player(numberOfUnits, ANY, ANY, cash);
+        return new Player(numberOfUnits, ANY, ANY, cash, 0);
     }
 
 }

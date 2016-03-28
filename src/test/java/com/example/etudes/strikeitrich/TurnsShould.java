@@ -59,27 +59,27 @@ public class TurnsShould {
 
 
     @Test
-    public void inform_players_about_market_finishedInventoryUnits_conditions() throws Exception {
-        given(bank.finishedInventoryUserConditions()).willReturn(condition);
-
-        newTurn();
-
-        players.stream().forEach(x -> verify(x).finishedInventoryUnits(condition));
-    }
-
-    @Test
     public void ask_players_about_their_bids() throws Exception {
         newTurn();
 
         players.stream().forEach(x -> verify(x).obtainRawMaterialUnitBid());
     }
 
-
     @Test
     public void ask_players_to_produce_stock() throws Exception {
         newTurn();
 
         players.stream().forEach(x -> verify(x).produceStock());
+    }
+
+
+    @Test
+    public void inform_players_about_market_finishedInventoryUnits_conditions() throws Exception {
+        given(bank.finishedInventoryUserConditions()).willReturn(condition);
+
+        newTurn();
+
+        players.stream().forEach(x -> verify(x).finishedInventoryUnits(condition));
     }
 
     @Test

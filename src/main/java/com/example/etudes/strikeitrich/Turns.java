@@ -24,5 +24,6 @@ public class Turns {
         players.forEach(Player::obtainRawMaterialUnitBid);
         players.forEach(Player::produceStock);
         players.forEach(Player::sellInventory);
+        players.forEach(Player::payLoanInterest);
     }
 }

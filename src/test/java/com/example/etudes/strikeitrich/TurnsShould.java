@@ -96,4 +96,11 @@ public class TurnsShould {
         players.stream().forEach(x -> verify(x).payLoanInterest());
     }
 
+    @Test
+    public void ask_players_to_pay_outstanding_loans() throws Exception {
+        newTurn();
+
+        players.stream().forEach(x -> verify(x).payOutstandingLoans());
+    }
+
 }

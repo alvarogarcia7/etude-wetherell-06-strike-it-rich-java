@@ -83,6 +83,9 @@ public class Player {
     public void payOutstandingLoans() {
     }
 
+    public void takeOutLoans() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

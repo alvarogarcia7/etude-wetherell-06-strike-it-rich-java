@@ -9,3 +9,7 @@
 
 * in Monthly operations -> bid for supplies, we need to make sure that the bank does not cumulate the units from one turn to the next one.
 * no notion of junior to senior player. this, at least, affects while deciding priorities in case there is a tie
+
+## TDD
+
+ * shell only in produce stock

@@ -75,4 +75,12 @@ public class TurnsShould {
     }
 
 
+    @Test
+    public void ask_players_to_produce_stock() throws Exception {
+        newTurn();
+
+        players.stream().forEach(x -> verify(x).produceStock());
+    }
+
+
 }

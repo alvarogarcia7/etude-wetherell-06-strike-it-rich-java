@@ -100,4 +100,8 @@ public class Player {
                 .append(automatedFactoryUnits)
                 .toHashCode();
     }
+
+    public void produceStock() {
+
+    }
 }

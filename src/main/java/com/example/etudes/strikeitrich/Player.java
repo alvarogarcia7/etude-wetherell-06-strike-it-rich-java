@@ -90,6 +90,9 @@ public class Player {
 
     }
 
+    public void orderConstruction() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

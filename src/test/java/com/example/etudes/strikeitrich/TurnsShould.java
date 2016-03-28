@@ -109,4 +109,11 @@ public class TurnsShould {
 
         players.stream().forEach(x -> verify(x).takeOutLoans());
     }
+
+    @Test
+    public void ask_players_to_order_construction() throws Exception {
+        newTurn();
+
+        players.stream().forEach(x -> verify(x).orderConstruction());
+    }
 }

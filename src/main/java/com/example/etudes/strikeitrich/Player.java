@@ -77,6 +77,9 @@ public class Player {
 
     }
 
+    public void payLoanInterest() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

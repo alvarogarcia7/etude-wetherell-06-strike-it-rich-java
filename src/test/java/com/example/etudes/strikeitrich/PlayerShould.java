@@ -1,6 +1,8 @@
 package com.example.etudes.strikeitrich;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -11,9 +13,15 @@ public class PlayerShould {
     private static final int ONE = 1;
     private static final int MANY = 3;
     private static final int ANY = 0;
+    private MaterialsCalculator calculator;
+
+    @Before
+    public void setUp() {
+        calculator = Mockito.mock(MaterialsCalculator.class);
+    }
 
 
-    public static class Pay_for_each_RawMaterialUnit {
+    public class Pay_for_each_RawMaterialUnit {
 
         private static final int EACH_UNIT_PRICE = 300;
         private static final int INITIAL_CASH = 10_000;
@@ -36,7 +44,7 @@ public class PlayerShould {
         private PayingStub assertThatPayingFor(int numberOfUnits) {
             Player player = new Player(ANY, numberOfUnits, ANY, INITIAL_CASH);
 
-            player.payFixedExpenses(MaterialsCalculator.defaultPrices());
+            player.payFixedExpenses(calculator);
 
             assertThat(player, is(new Player(ANY, numberOfUnits, ANY, INITIAL_CASH - numberOfUnits * EACH_UNIT_PRICE)));
 
@@ -45,7 +53,7 @@ public class PlayerShould {
     }
 
 
-    public static class Pay_for_each_FinishedInventoryUnit {
+    public class Pay_for_each_FinishedInventoryUnit {
 
         private static final int EACH_UNIT_PRICE = 500;
         private static final int INITIAL_CASH = 10_000;
@@ -68,7 +76,7 @@ public class PlayerShould {
         private PayingStub assertThatPayingFor(int numberOfUnits) {
             Player player = new Player(ANY, ANY, numberOfUnits, INITIAL_CASH);
 
-            player.payFixedExpenses(MaterialsCalculator.defaultPrices());
+            player.payFixedExpenses(calculator);
 
             assertThat(player, is(new Player(ANY, ANY, numberOfUnits, INITIAL_CASH - numberOfUnits * EACH_UNIT_PRICE)));
 

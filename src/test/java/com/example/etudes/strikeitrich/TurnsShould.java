@@ -82,5 +82,11 @@ public class TurnsShould {
         players.stream().forEach(x -> verify(x).produceStock());
     }
 
+    @Test
+    public void ask_players_to_sell_inventory() throws Exception {
+        newTurn();
+
+        players.stream().forEach(x -> verify(x).sellInventory());
+    }
 
 }

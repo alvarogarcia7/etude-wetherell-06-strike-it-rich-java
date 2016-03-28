@@ -73,6 +73,10 @@ public class Player {
                 .toString();
     }
 
+    public void sellInventory() {
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

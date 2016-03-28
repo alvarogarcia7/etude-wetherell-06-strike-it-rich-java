@@ -13,3 +13,4 @@
 ## TDD
 
  * shell only in produce stock
+ * order of bids when selling stock

@@ -73,20 +73,20 @@ public class Player {
                 .toString();
     }
 
-    public void sellInventory() {
+    void sellInventory() {
 
     }
 
-    public void payLoanInterest() {
+    void payLoanInterest() {
     }
 
-    public void payOutstandingLoans() {
+    void payOutstandingLoans() {
     }
 
-    public void takeOutLoans() {
+    void takeOutLoans() {
     }
 
-    public void produceStock() {
+    void produceStock() {
 
     }
 

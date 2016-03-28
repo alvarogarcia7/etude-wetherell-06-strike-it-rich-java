@@ -86,6 +86,10 @@ public class Player {
     public void takeOutLoans() {
     }
 
+    public void produceStock() {
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -112,9 +116,5 @@ public class Player {
                 .append(cash)
                 .append(automatedFactoryUnits)
                 .toHashCode();
-    }
-
-    public void produceStock() {
-
     }
 }

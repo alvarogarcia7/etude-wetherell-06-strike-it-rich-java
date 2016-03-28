@@ -26,5 +26,6 @@ public class Turns {
         players.forEach(Player::sellInventory);
         players.forEach(Player::payLoanInterest);
         players.forEach(Player::payOutstandingLoans);
+        players.forEach(Player::takeOutLoans);
     }
 }

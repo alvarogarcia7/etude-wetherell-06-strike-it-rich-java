@@ -60,7 +60,7 @@ public class GameShould {
     @Test
     public void do_not_start_a_turn_while_players_are_bankrupt() throws Exception {
         Game game = new Game(gameStarter, turns, players);
-        doReturn(false).when(turns).canStartNew();
+        when(turns.canStartNew()).thenReturn(false);
 
         game.start();
 

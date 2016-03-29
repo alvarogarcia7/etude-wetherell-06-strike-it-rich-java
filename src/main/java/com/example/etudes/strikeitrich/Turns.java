@@ -47,6 +47,6 @@ public class Turns {
     }
 
     public boolean canStartNew() {
-        return validPlayers().size() > 0;
+        return !validPlayers().isEmpty();
     }
 }

@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TurnsShould {
@@ -30,11 +30,13 @@ public class TurnsShould {
     private List<Player> players;
     @Mock
     private MaterialsCalculator materialCalculator;
+    private Players players1;
 
     @Before
     public void setUp() throws Exception {
         players = Arrays.asList(player1, player2);
-        turns = Turns.aNew(players, bank, materialCalculator);
+        players1 = new Players(players);
+        turns = Turns.aNew(players, bank, materialCalculator, players1);
     }
 
     @Test
@@ -115,5 +117,24 @@ public class TurnsShould {
         newTurn();
 
         players.stream().forEach(x -> verify(x).orderConstruction());
+    }
+
+
+    @Test
+    public void start_a_turn_while_players_are_not_bankrupt() throws Exception {
+        newTurn();
+
+        verify(turns, atLeast(2)).newTurn();
+    }
+
+    @Test
+    public void do_not_start_a_turn_while_players_are_bankrupt() throws Exception {
+        turns
+        doThrow(new BankruptException()).when(player1).produceStock();
+        doThrow(new BankruptException()).when(player2).produceStock();
+
+        game.start();
+
+        verify(turns, times(1)).newTurn();
     }
 }

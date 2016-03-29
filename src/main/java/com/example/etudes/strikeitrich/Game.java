@@ -4,18 +4,24 @@ import java.util.List;
 
 public class Game {
     private final GameStarter gameStarter;
-    private final List<Player> players;
+    private List<Player> players;
     private final Turns turns;
+    private final Players players1;
 
-    public Game(GameStarter gameStarter, Turns turns, List<Player> players) {
+    public Game(GameStarter gameStarter, Turns turns, List<Player> players, Players players1) {
         this.gameStarter = gameStarter;
         this.turns = turns;
         this.players = players;
+        this.players1 = players1;
     }
 
     public void start() {
         players.forEach(gameStarter::deal);
-        turns.newTurn();
-        turns.newTurn();
+        if (players1.isSomeoneStanding()){
+            turns.newTurn();
+        }
+        if (players1.isSomeoneStanding()) {
+            turns.newTurn();
+        }
     }
 }

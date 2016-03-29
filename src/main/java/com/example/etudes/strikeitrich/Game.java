@@ -15,10 +15,7 @@ public class Game {
 
     public void start() {
         players.forEach(gameStarter::deal);
-        if (turns.canStartNew()) {
-            turns.newTurn();
-        }
-        if (turns.canStartNew()) {
+        while (turns.canStartNew()) {
             turns.newTurn();
         }
     }

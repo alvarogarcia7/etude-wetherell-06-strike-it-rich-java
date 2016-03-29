@@ -9,6 +9,10 @@ import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -52,5 +56,14 @@ public class GameShould {
         game.start();
 
         verify(turns).newTurn();
+    }
+
+    @Test
+    public void start_a_turn_while_players_are_not_bankrupt() throws Exception {
+        Game game = new Game(gameStarter, turns, players);
+
+        game.start();
+
+        verify(turns, atLeast(2)).newTurn();
     }
 }

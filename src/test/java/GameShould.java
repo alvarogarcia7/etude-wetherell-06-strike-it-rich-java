@@ -55,7 +55,7 @@ public class GameShould {
 
         game.start();
 
-        verify(turns).newTurn();
+        verify(turns, atLeast(1)).newTurn();
     }
 
     @Test

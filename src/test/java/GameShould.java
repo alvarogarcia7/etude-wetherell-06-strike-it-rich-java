@@ -50,6 +50,7 @@ public class GameShould {
     @Test
     public void start_a_new_turn_when_the_game_starts() throws Exception {
         Game game = new Game(gameStarter, turns, Collections.emptyList());
+        doReturn(true).when(turns).canStartNew();
 
         game.start();
 
@@ -59,6 +60,7 @@ public class GameShould {
     @Test
     public void start_a_turn_while_players_are_not_bankrupt() throws Exception {
         Game game = new Game(gameStarter, turns, players);
+        doReturn(true).when(turns).canStartNew();
 
         game.start();
 
@@ -68,8 +70,7 @@ public class GameShould {
     @Test
     public void do_not_start_a_turn_while_players_are_bankrupt() throws Exception {
         Game game = new Game(gameStarter, turns, players);
-        doThrow(new BankruptException()).when(player1).produceStock();
-        doThrow(new BankruptException()).when(player2).produceStock();
+        doReturn(false).when(turns).canStartNew();
 
         game.start();
 

@@ -76,4 +76,15 @@ public class GameShould {
 
         verify(turns, times(0)).newTurn();
     }
+
+
+    @Test
+    public void dxxo_not_start_a_turn_while_players_are_bankrupt() throws Exception {
+        Game game = new Game(gameStarter, turns, players);
+        when(turns.canStartNew()).thenReturn(true, true, true, false);
+
+        game.start();
+
+        verify(turns, times(3)).newTurn();
+    }
 }

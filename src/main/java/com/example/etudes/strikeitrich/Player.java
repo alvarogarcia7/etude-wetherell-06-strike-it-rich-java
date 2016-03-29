@@ -86,7 +86,7 @@ public class Player {
     void takeOutLoans() {
     }
 
-    void produceStock() {
+    public void produceStock() throws BankruptException {
 
     }
 

@@ -11,9 +11,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GameShould {
@@ -65,5 +63,16 @@ public class GameShould {
         game.start();
 
         verify(turns, atLeast(2)).newTurn();
+    }
+
+    @Test
+    public void do_not_start_a_turn_while_players_are_bankrupt() throws Exception {
+        Game game = new Game(gameStarter, turns, players);
+        doThrow(new BankruptException()).when(player1).produceStock();
+        doThrow(new BankruptException()).when(player2).produceStock();
+
+        game.start();
+
+        verify(turns, times(0)).newTurn();
     }
 }

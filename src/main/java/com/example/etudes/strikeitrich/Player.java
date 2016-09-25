@@ -63,16 +63,6 @@ public class Player {
 
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .append("standardFactories", standardFactories)
-                .append("rawMaterialUnits", rawMaterialUnits)
-                .append("finishedInventoryUnits", finishedInventoryUnits)
-                .append("cash", cash)
-                .toString();
-    }
-
     void sellInventory() {
 
     }
@@ -91,6 +81,16 @@ public class Player {
     }
 
     public void orderConstruction() {
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("standardFactories", standardFactories)
+                .append("rawMaterialUnits", rawMaterialUnits)
+                .append("finishedInventoryUnits", finishedInventoryUnits)
+                .append("cash", cash)
+                .toString();
     }
 
     @Override

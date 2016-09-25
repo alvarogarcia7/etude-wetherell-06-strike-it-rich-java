@@ -1,4 +1,10 @@
-import com.example.etudes.strikeitrich.*;
+package com.example.etudes.strikeitrich.acceptance;
+
+import com.example.etudes.strikeitrich.Bank;
+import com.example.etudes.strikeitrich.Game;
+import com.example.etudes.strikeitrich.GameStarter;
+import com.example.etudes.strikeitrich.Player;
+import com.example.etudes.strikeitrich.Turns;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,9 +15,9 @@ import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GameShould {

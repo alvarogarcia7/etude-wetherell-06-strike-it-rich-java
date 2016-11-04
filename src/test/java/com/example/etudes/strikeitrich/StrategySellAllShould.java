@@ -20,32 +20,26 @@ public class StrategySellAllShould {
 
     @Test
     public void exchange_all_inventory_items_for_money_when_there_are_several () {
-        Player player = new Player(0, 0, 2, 0, 0, SELL_ALL);
-        player.finishedInventoryUnits(decreaseFinishedInventoryUnitsCondition);
-
-        player.sellInventory();
-
-        verify(decreaseFinishedInventoryUnitsCondition, times(2)).apply(player);
+        verifyInteractionBasedOnFinishedInventoryUnits(2);
     }
 
     @Test
     public void exchange_all_inventory_items_for_money_when_there_is_one () {
-        Player player = new Player(0, 0, 1, 0, 0, SELL_ALL);
-        player.finishedInventoryUnits(decreaseFinishedInventoryUnitsCondition);
-
-        player.sellInventory();
-
-        verify(decreaseFinishedInventoryUnitsCondition, times(1)).apply(player);
+        verifyInteractionBasedOnFinishedInventoryUnits(1);
     }
 
     @Test
     public void exchange_all_inventory_items_for_money_when_there_are_none () {
-        Player player = new Player(0, 0, 0, 0, 0, SELL_ALL);
+        verifyInteractionBasedOnFinishedInventoryUnits(0);
+    }
+
+    private void verifyInteractionBasedOnFinishedInventoryUnits (final int finishedInventoryUnits) {
+        Player player = new Player(0, 0, finishedInventoryUnits, 0, 0, SELL_ALL);
         player.finishedInventoryUnits(decreaseFinishedInventoryUnitsCondition);
 
         player.sellInventory();
 
-        verify(decreaseFinishedInventoryUnitsCondition, times(0)).apply(player);
+        verify(decreaseFinishedInventoryUnitsCondition, times(finishedInventoryUnits)).apply(player);
     }
 
 }

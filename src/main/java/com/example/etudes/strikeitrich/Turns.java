@@ -22,9 +22,9 @@ public class Turns {
 
     public void newTurn() {
         final List<Player> players = validPlayers();
-        players.forEach(x -> x.payFixedExpenses(calculator));
-        players.forEach(x -> x.rawMaterialUnits(bank.rawMaterialUnitConditions()));
-        players.forEach(x -> x.finishedInventoryUnits(bank.finishedInventoryUserConditions()));
+        players.forEach(player -> player.payFixedExpenses(calculator));
+        players.forEach(player -> player.rawMaterialUnits(bank.rawMaterialUnitConditions()));
+        players.forEach(player -> player.finishedInventoryUnits(bank.finishedInventoryUserConditions()));
         players.forEach(Player::obtainRawMaterialUnitBid);
         for (Player current : players) {
             try {

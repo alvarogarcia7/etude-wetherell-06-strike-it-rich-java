@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Optional;
 
+import static com.example.etudes.strikeitrich.Strategy.SELL_ALL;
 import static com.example.etudes.strikeitrich.Strategy.SELL_ONE;
 
 public class Player {
@@ -88,8 +89,16 @@ public class Player {
     }
 
     void sellInventory() {
-        if (finishedInventoryUnitsCondition.isPresent()) {
-            finishedInventoryUnitsCondition.get().apply(this);
+        if(strategy == SELL_ONE) {
+            if (finishedInventoryUnitsCondition.isPresent()) {
+                finishedInventoryUnitsCondition.get().apply(this);
+            }
+        } else if (strategy == SELL_ALL){
+            if (finishedInventoryUnitsCondition.isPresent()) {
+                while(finishedInventoryUnits > 0) {
+                    finishedInventoryUnitsCondition.get().apply(this);
+                }
+            }
         }
     }
 

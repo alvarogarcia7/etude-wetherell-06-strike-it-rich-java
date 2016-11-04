@@ -89,13 +89,11 @@ public class Player {
     }
 
     void sellInventory() {
-        if(strategy == SELL_ONE) {
-            if (finishedInventoryUnitsCondition.isPresent()) {
+        if (finishedInventoryUnitsCondition.isPresent()) {
+            if (strategy == SELL_ONE) {
                 finishedInventoryUnitsCondition.get().apply(this);
-            }
-        } else if (strategy == SELL_ALL){
-            if (finishedInventoryUnitsCondition.isPresent()) {
-                while(finishedInventoryUnits > 0) {
+            } else if (strategy == SELL_ALL) {
+                while (finishedInventoryUnits > 0) {
                     finishedInventoryUnitsCondition.get().apply(this);
                 }
             }

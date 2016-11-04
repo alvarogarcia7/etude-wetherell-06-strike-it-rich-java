@@ -31,7 +31,7 @@ class Bid {
         return availableUnits - units;
     }
 
-    static int descendingPrice(Bid bid, Bid bid1) {
-        return -Integer.compare(bid.price, bid1.price);
+    static int descendingPrice(Bid bid, Bid anotherBid) {
+        return -Integer.compare(bid.price, anotherBid.price);
     }
 }

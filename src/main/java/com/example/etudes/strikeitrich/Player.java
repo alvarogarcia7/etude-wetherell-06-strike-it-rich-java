@@ -12,7 +12,13 @@ public class Player {
     private int cash;
     private int automatedFactoryUnits;
 
-    public Player(int standardFactories, int rawMaterialUnits, int finishedInventoryUnits, int cash, int automatedFactoryUnits) {
+    public Player (
+            int standardFactories,
+            int rawMaterialUnits,
+            int finishedInventoryUnits,
+            int cash,
+            int automatedFactoryUnits) {
+        
         this.standardFactories = standardFactories;
         this.rawMaterialUnits = rawMaterialUnits;
         this.finishedInventoryUnits = finishedInventoryUnits;

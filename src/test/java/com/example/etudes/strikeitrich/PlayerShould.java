@@ -3,18 +3,19 @@ package com.example.etudes.strikeitrich;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerShould {
 
-    @Mock
-    public Condition condition;
-    final Condition condition1FIU_Equals_300Cash = new Condition(
+    @Spy
+    public Condition condition1FIU_Equals_300Cash = new Condition(
             (Player p) ->
             {
                 p.decreaseFinishedInventoryUnits(1);
@@ -22,6 +23,8 @@ public class PlayerShould {
                 return null;
             }
     );
+
+
 
     @Test
     public void exchange_a_single_inventory_item_for_money () {
@@ -31,6 +34,7 @@ public class PlayerShould {
 
         player.sellInventory();
 
+        verify(condition1FIU_Equals_300Cash).apply(player);
         assertThat(player, is(new Player(0, 0, 0, 300, 0)));
     }
 
@@ -42,6 +46,7 @@ public class PlayerShould {
 
         player.sellInventory();
 
+        verify(condition1FIU_Equals_300Cash, times(2)).apply(player);
         assertThat(player, is(new Player(0, 0, 0, 600, 0)));
     }
 
@@ -51,6 +56,7 @@ public class PlayerShould {
 
         player.sellInventory();
 
+        verify(condition1FIU_Equals_300Cash, times(0)).apply(player);
         assertThat(player, is(player));
     }
 

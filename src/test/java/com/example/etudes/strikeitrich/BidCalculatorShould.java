@@ -79,7 +79,8 @@ public class BidCalculatorShould {
 
 
     private void distributeBids(Bid... bids) {
-        new BidCalculator(3, EXACT_PRICE, Arrays.asList(bids)).distribute();
+        final int units = 3;
+        new BidCalculator(units, EXACT_PRICE, Arrays.asList(bids)).distribute();
     }
 
     private void acceptBidFor(Player player) {

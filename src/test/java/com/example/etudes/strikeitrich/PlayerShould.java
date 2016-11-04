@@ -23,6 +23,15 @@ public class PlayerShould {
     });
 
     @Test
+    public void cannot_exchange_any_items_without_having_received_a_condition() {
+        Player player = new Player(0, 0, 2, 0, 0);
+
+        player.sellInventory();
+
+        verify(condition1, times(0)).apply(player);
+    }
+
+    @Test
     public void exchange_a_single_inventory_item_for_money () {
         Player player = new Player(0, 0, 1, 0, 0);
         player.finishedInventoryUnits(anyCondition);
@@ -40,15 +49,6 @@ public class PlayerShould {
         player.sellInventory();
 
         verify(condition1, times(2)).apply(player);
-    }
-
-    @Test
-    public void cannot_exchange_any_items_without_having_received_a_condition() {
-        Player player = new Player(0, 0, 2, 0, 0);
-
-        player.sellInventory();
-
-        verify(condition1, times(0)).apply(player);
     }
 
 }

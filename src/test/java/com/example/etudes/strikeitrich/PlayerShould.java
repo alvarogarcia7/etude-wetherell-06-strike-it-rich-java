@@ -17,7 +17,7 @@ public class PlayerShould {
     public Condition anyCondition;
 
     @Spy
-    public Condition condition1 = new Condition((Player p) -> {
+    public Condition decreaseFinishedInventoryUnitsCondition = new Condition((Player p) -> {
         p.decreaseFinishedInventoryUnits(1);
         return null;
     });
@@ -28,7 +28,7 @@ public class PlayerShould {
 
         player.sellInventory();
 
-        verify(condition1, times(0)).apply(player);
+        verify(anyCondition, times(0)).apply(player);
     }
 
     @Test
@@ -44,11 +44,11 @@ public class PlayerShould {
     @Test
     public void exchange_all_inventory_items_for_money () {
         Player player = new Player(0, 0, 2, 0, 0, Strategy.SELL_ALL);
-        player.finishedInventoryUnits(condition1);
+        player.finishedInventoryUnits(decreaseFinishedInventoryUnitsCondition);
 
         player.sellInventory();
 
-        verify(condition1, times(2)).apply(player);
+        verify(decreaseFinishedInventoryUnitsCondition, times(2)).apply(player);
     }
 
 }

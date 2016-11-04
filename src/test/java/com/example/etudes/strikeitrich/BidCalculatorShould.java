@@ -44,7 +44,7 @@ public class BidCalculatorShould {
 
         distributeBids(new Bid(1, BELOW_THE_PRICE, player1));
 
-        dontAcceptBidFor(player1);
+        doNotAcceptBidFor(player1);
     }
 
     @Test
@@ -53,8 +53,8 @@ public class BidCalculatorShould {
         distributeBids(new Bid(0, ANY_VALID_PRICE, player1),
                 new Bid(-1, ANY_VALID_PRICE, player2));
 
-        dontAcceptBidFor(player1);
-        dontAcceptBidFor(player2);
+        doNotAcceptBidFor(player1);
+        doNotAcceptBidFor(player2);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class BidCalculatorShould {
                 new Bid(3, HIGHER_THAN_THE_PRICE, player2));
 
         acceptBidFor(player1);
-        dontAcceptBidFor(player2);
+        doNotAcceptBidFor(player2);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class BidCalculatorShould {
         distributeBids(new Bid(3, HIGHER_THAN_THE_PRICE, player1),
                 new Bid(3, HIGHEST_THAN_THE_PRICE, player2));
 
-        dontAcceptBidFor(player1);
+        doNotAcceptBidFor(player1);
         acceptBidFor(player2);
     }
 
@@ -87,7 +87,7 @@ public class BidCalculatorShould {
         verify(player).acceptBid();
     }
 
-    private void dontAcceptBidFor(Player player) {
+    private void doNotAcceptBidFor (Player player) {
         verify(player, times(0)).acceptBid();
     }
 

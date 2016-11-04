@@ -4,6 +4,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.Optional;
+
 public class Player {
 
     private int standardFactories;
@@ -11,6 +13,7 @@ public class Player {
     private int finishedInventoryUnits;
     private int cash;
     private int automatedFactoryUnits;
+    private Optional<Condition> finishedInventoryUnitsCondition;
 
     public Player (
             int standardFactories,
@@ -55,10 +58,11 @@ public class Player {
     }
 
     void rawMaterialUnits(Condition rawMaterialUnitConditions) {
+
     }
 
     void finishedInventoryUnits(Condition condition) {
-
+        this.finishedInventoryUnitsCondition = Optional.of(condition);
     }
 
     Bid obtainRawMaterialUnitBid() {
@@ -70,7 +74,9 @@ public class Player {
     }
 
     void sellInventory() {
-
+        if (finishedInventoryUnitsCondition.isPresent()) {
+            finishedInventoryUnitsCondition.get().apply(this);
+        }
     }
 
     void payLoanInterest() {
@@ -128,5 +134,6 @@ public class Player {
     }
 
     public void decreaseFinishedInventoryUnits (final int amount) {
+        this.finishedInventoryUnits -= amount;
     }
 }

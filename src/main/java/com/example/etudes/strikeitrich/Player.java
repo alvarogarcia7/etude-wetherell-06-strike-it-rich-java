@@ -6,6 +6,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Optional;
 
+import static com.example.etudes.strikeitrich.Strategy.SELL_ONE;
+
 public class Player {
 
     private int standardFactories;
@@ -13,20 +15,32 @@ public class Player {
     private int finishedInventoryUnits;
     private int cash;
     private int automatedFactoryUnits;
+    private final Strategy strategy;
     private Optional<Condition> finishedInventoryUnitsCondition;
+
+    public Player (
+        int standardFactories,
+        int rawMaterialUnits,
+        int finishedInventoryUnits,
+        int cash,
+        int automatedFactoryUnits) {
+        this(standardFactories, rawMaterialUnits, finishedInventoryUnits, cash, automatedFactoryUnits, SELL_ONE);
+    }
 
     public Player (
             int standardFactories,
             int rawMaterialUnits,
             int finishedInventoryUnits,
             int cash,
-            int automatedFactoryUnits) {
+            int automatedFactoryUnits,
+            Strategy strategy) {
 
         this.standardFactories = standardFactories;
         this.rawMaterialUnits = rawMaterialUnits;
         this.finishedInventoryUnits = finishedInventoryUnits;
         this.cash = cash;
         this.automatedFactoryUnits = automatedFactoryUnits;
+        this.strategy = strategy;
     }
 
     void receiveStandardFactories(int amount) {

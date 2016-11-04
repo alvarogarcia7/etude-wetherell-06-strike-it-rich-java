@@ -19,7 +19,7 @@ public class BidCalculatorShould {
     private static final int EXACT_PRICE = 3_000;
     private static final int HIGHER_THAN_THE_PRICE = 3_500;
     private static final int ANY_VALID_PRICE = HIGHER_THAN_THE_PRICE;
-    private static final int HIGHEST_THAN_THE_PRICE = 4_000;
+    private static final int HIGHEST_BID = 4_000;
 
     @Mock
     private Player player1;
@@ -60,7 +60,7 @@ public class BidCalculatorShould {
     @Test
     public void distribute_the_available_units_while_they_last() throws Exception {
 
-        distributeBids(new Bid(3, HIGHEST_THAN_THE_PRICE, player1),
+        distributeBids(new Bid(3, HIGHEST_BID, player1),
                 new Bid(3, HIGHER_THAN_THE_PRICE, player2));
 
         acceptBidFor(player1);
@@ -71,7 +71,7 @@ public class BidCalculatorShould {
     public void first_units_go_to_highest_bidders() throws Exception {
 
         distributeBids(new Bid(3, HIGHER_THAN_THE_PRICE, player1),
-                new Bid(3, HIGHEST_THAN_THE_PRICE, player2));
+                new Bid(3, HIGHEST_BID, player2));
 
         doNotAcceptBidFor(player1);
         acceptBidFor(player2);
@@ -94,6 +94,6 @@ public class BidCalculatorShould {
     private void checkConstantConfiguration() {
         assertTrue(BELOW_THE_PRICE < EXACT_PRICE);
         assertTrue(EXACT_PRICE < HIGHER_THAN_THE_PRICE);
-        assertTrue(HIGHER_THAN_THE_PRICE < HIGHEST_THAN_THE_PRICE);
+        assertTrue(HIGHER_THAN_THE_PRICE < HIGHEST_BID);
     }
 }

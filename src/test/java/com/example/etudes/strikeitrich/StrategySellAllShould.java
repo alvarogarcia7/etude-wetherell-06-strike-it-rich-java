@@ -19,8 +19,8 @@ public class StrategySellAllShould {
     });
 
     @Test
-    public void exchange_all_inventory_items_for_money_when_there_are_several () {
-        verifyInteractionBasedOnFinishedInventoryUnits(2);
+    public void exchange_all_inventory_items_for_money_when_there_are_none () {
+        verifyInteractionBasedOnFinishedInventoryUnits(0);
     }
 
     @Test
@@ -29,8 +29,8 @@ public class StrategySellAllShould {
     }
 
     @Test
-    public void exchange_all_inventory_items_for_money_when_there_are_none () {
-        verifyInteractionBasedOnFinishedInventoryUnits(0);
+    public void exchange_all_inventory_items_for_money_when_there_are_several () {
+        verifyInteractionBasedOnFinishedInventoryUnits(2);
     }
 
     private void verifyInteractionBasedOnFinishedInventoryUnits (final int finishedInventoryUnits) {

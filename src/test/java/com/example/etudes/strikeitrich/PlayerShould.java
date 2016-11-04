@@ -42,13 +42,23 @@ public class PlayerShould {
     }
 
     @Test
-    public void exchange_all_inventory_items_for_money () {
+    public void exchange_all_inventory_items_for_money_2 () {
         Player player = new Player(0, 0, 2, 0, 0, Strategy.SELL_ALL);
         player.finishedInventoryUnits(decreaseFinishedInventoryUnitsCondition);
 
         player.sellInventory();
 
         verify(decreaseFinishedInventoryUnitsCondition, times(2)).apply(player);
+    }
+
+    @Test
+    public void exchange_all_inventory_items_for_money_1 () {
+        Player player = new Player(0, 0, 1, 0, 0, Strategy.SELL_ALL);
+        player.finishedInventoryUnits(decreaseFinishedInventoryUnitsCondition);
+
+        player.sellInventory();
+
+        verify(decreaseFinishedInventoryUnitsCondition, times(1)).apply(player);
     }
 
 }

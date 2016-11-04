@@ -44,4 +44,13 @@ public class PlayerShould {
         assertThat(player, is(new Player(0, 0, 0, 600, 0)));
     }
 
+    @Test
+    public void cannot_exchange_any_items_without_having_received_a_condition() {
+        Player player = new Player(0, 0, 2, 0, 0, Strategy.SELL_ALL);
+
+        player.sellInventory();
+
+        assertThat(player, is(player));
+    }
+
 }

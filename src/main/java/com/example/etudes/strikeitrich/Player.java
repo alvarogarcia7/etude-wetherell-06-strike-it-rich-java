@@ -18,7 +18,7 @@ public class Player {
             int finishedInventoryUnits,
             int cash,
             int automatedFactoryUnits) {
-        
+
         this.standardFactories = standardFactories;
         this.rawMaterialUnits = rawMaterialUnits;
         this.finishedInventoryUnits = finishedInventoryUnits;
@@ -125,5 +125,8 @@ public class Player {
                 .append(cash)
                 .append(automatedFactoryUnits)
                 .toHashCode();
+    }
+
+    public void decreaseFinishedInventoryUnits (final int amount) {
     }
 }

@@ -42,6 +42,7 @@ public class Player {
         this.cash = cash;
         this.automatedFactoryUnits = automatedFactoryUnits;
         this.strategy = strategy;
+        this.finishedInventoryUnitsCondition = Optional.empty();
     }
 
     void receiveStandardFactories(int amount) {

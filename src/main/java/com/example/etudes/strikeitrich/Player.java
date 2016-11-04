@@ -90,7 +90,7 @@ public class Player {
 
     void sellInventory() {
         if (finishedInventoryUnitsCondition.isPresent()) {
-            strategy.apply(this, finishedInventoryUnitsCondition.get());
+            strategy.applyFinishedInventoryUnits(this, finishedInventoryUnitsCondition.get());
         }
     }
 

@@ -4,20 +4,20 @@ public abstract class Strategy {
     public static Strategy SELL_ONE = new SellOneStrategy();
     public static Strategy SELL_ALL = new SellAllStrategy();
 
-    public abstract void apply (final Player player, final Condition finishedInventoryUnitsCondition);
+    public abstract void applyFinishedInventoryUnits (final Player player, final Condition condition);
 
     private static class SellOneStrategy extends Strategy {
         @Override
-        public void apply (final Player player, final Condition finishedInventoryUnitsCondition) {
-            finishedInventoryUnitsCondition.apply(player);
+        public void applyFinishedInventoryUnits (final Player player, final Condition condition) {
+            condition.apply(player);
         }
     }
 
     private static class SellAllStrategy extends Strategy {
         @Override
-        public void apply (final Player player, final Condition finishedInventoryUnitsCondition) {
+        public void applyFinishedInventoryUnits (final Player player, final Condition condition) {
             while (player.finishedInventoryUnits() > 0) {
-                finishedInventoryUnitsCondition.apply(player);
+                condition.apply(player);
             }
         }
 

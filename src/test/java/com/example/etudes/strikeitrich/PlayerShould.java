@@ -16,7 +16,7 @@ public class PlayerShould {
     public Condition anyCondition;
 
     @Test
-    public void cannot_exchange_any_items_without_having_received_a_condition() {
+    public void cannot_exchange_any_items_without_having_received_a_condition () {
         Player player = new Player(0, 0, 0, 0, 0);
 
         player.sellInventory();

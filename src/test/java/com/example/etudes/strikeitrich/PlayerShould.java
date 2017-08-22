@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 public class PlayerShould {
 
     @Mock
-    public Condition anyCondition;
+    public MarketCondition anyMarketCondition;
 
     @Test
     public void cannot_exchange_any_items_without_having_received_a_condition () {
@@ -21,16 +21,16 @@ public class PlayerShould {
 
         player.sellInventory();
 
-        verify(anyCondition, times(0)).apply(player);
+        verify(anyMarketCondition, times(0)).apply(player);
     }
 
     @Test
     public void exchange_a_single_inventory_item_for_money () {
         Player player = new Player(0, 0, 0, 0, 0);
-        player.finishedInventoryUnits(anyCondition);
+        player.finishedInventoryUnits(anyMarketCondition);
 
         player.sellInventory();
 
-        verify(anyCondition).apply(player);
+        verify(anyMarketCondition).apply(player);
     }
 }

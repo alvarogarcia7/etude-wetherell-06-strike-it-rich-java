@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class StrategySellAllShould {
     @Spy
-    public Condition decreaseFinishedInventoryUnitsCondition = new Condition((Player p) -> {
+    public MarketCondition decreaseFinishedInventoryUnitsMarketCondition = new MarketCondition((Player p) -> {
         p.decreaseFinishedInventoryUnits(1);
         return null;
     });
@@ -35,11 +35,11 @@ public class StrategySellAllShould {
 
     private void verifyInteractionBasedOnFinishedInventoryUnits (final int finishedInventoryUnits) {
         Player player = new Player(0, 0, finishedInventoryUnits, 0, 0, SELL_ALL);
-        player.finishedInventoryUnits(decreaseFinishedInventoryUnitsCondition);
+        player.finishedInventoryUnits(decreaseFinishedInventoryUnitsMarketCondition);
 
         player.sellInventory();
 
-        verify(decreaseFinishedInventoryUnitsCondition, times(finishedInventoryUnits)).apply(player);
+        verify(decreaseFinishedInventoryUnitsMarketCondition, times(finishedInventoryUnits)).apply(player);
     }
 
 }

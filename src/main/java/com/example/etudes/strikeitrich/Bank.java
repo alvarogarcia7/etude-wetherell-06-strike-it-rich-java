@@ -1,11 +1,11 @@
 package com.example.etudes.strikeitrich;
 
 public class Bank {
-    public Condition rawMaterialUnitConditions() {
+    public MarketCondition rawMaterialUnitConditions() {
         return null;
     }
 
-    public Condition finishedInventoryUserConditions() {
+    public MarketCondition finishedInventoryUserConditions() {
         return null;
     }
 }

@@ -25,7 +25,7 @@ public class TurnsShould {
     private Bank bank;
 
     @Mock
-    Condition condition;
+    MarketCondition marketCondition;
     private Turns turns;
     private List<Player> players;
     @Mock
@@ -50,11 +50,11 @@ public class TurnsShould {
 
     @Test
     public void inform_players_about_market_rawMaterialUnit_conditions() throws Exception {
-        given(bank.rawMaterialUnitConditions()).willReturn(condition);
+        given(bank.rawMaterialUnitConditions()).willReturn(marketCondition);
 
         newTurn();
 
-        players.stream().forEach(x -> verify(x).rawMaterialUnits(condition));
+        players.stream().forEach(x -> verify(x).rawMaterialUnits(marketCondition));
     }
 
 
@@ -75,11 +75,11 @@ public class TurnsShould {
 
     @Test
     public void inform_players_about_market_finishedInventoryUnits_conditions() throws Exception {
-        given(bank.finishedInventoryUserConditions()).willReturn(condition);
+        given(bank.finishedInventoryUserConditions()).willReturn(marketCondition);
 
         newTurn();
 
-        players.stream().forEach(x -> verify(x).finishedInventoryUnits(condition));
+        players.stream().forEach(x -> verify(x).finishedInventoryUnits(marketCondition));
     }
 
     @Test

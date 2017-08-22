@@ -16,7 +16,7 @@ public class Player {
     private int cash;
     private int automatedFactoryUnits;
     private final Strategy strategy;
-    private Optional<Condition> finishedInventoryUnitsCondition;
+    private Optional<MarketCondition> finishedInventoryUnitsCondition;
 
     public Player (
         int standardFactories,
@@ -72,12 +72,12 @@ public class Player {
         cash -= amount;
     }
 
-    void rawMaterialUnits(Condition rawMaterialUnitConditions) {
+    void rawMaterialUnits(MarketCondition rawMaterialUnitConditions) {
 
     }
 
-    void finishedInventoryUnits(Condition condition) {
-        this.finishedInventoryUnitsCondition = Optional.of(condition);
+    void finishedInventoryUnits(MarketCondition marketCondition) {
+        this.finishedInventoryUnitsCondition = Optional.of(marketCondition);
     }
 
     Bid obtainRawMaterialUnitBid() {
@@ -89,7 +89,7 @@ public class Player {
     }
 
     void sellInventory() {
-        finishedInventoryUnitsCondition.ifPresent((Condition condition) -> strategy.applyFinishedInventoryUnits(this, condition));
+        finishedInventoryUnitsCondition.ifPresent((MarketCondition marketCondition) -> strategy.applyFinishedInventoryUnits(this, marketCondition));
     }
 
     void payLoanInterest() {

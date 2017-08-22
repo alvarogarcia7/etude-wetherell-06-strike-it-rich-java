@@ -16,7 +16,7 @@ public class StrategySellAllShould {
     public MarketCondition decreaseFinishedInventoryUnitsMarketCondition = new MarketCondition((Player p) -> {
         p.decreaseFinishedInventoryUnits(1);
         return null;
-    });
+    }, new PriceLevel(1, 800, 3, 6500));
 
     @Test
     public void exchange_all_inventory_items_for_money_when_there_are_none () {

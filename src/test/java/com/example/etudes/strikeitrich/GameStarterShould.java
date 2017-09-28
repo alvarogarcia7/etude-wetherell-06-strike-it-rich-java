@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.is;
 public class GameStarterShould {
 
     @Test
-    public void deal_to_players() throws Exception {
+    public void deal_to_players() {
         Player player1 = PlayerObjectMother.emptyWithCash(0);
         GameStarter gameStarter = new GameStarter();
 

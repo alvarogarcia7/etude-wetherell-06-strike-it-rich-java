@@ -1,6 +1,7 @@
 package com.example.etudes.strikeitrich;
 
 
+import com.example.etudes.strikeitrich.player.PlayerObjectMother;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -58,6 +59,6 @@ public class PlayerShould {
     }
 
     private Player getEmptyPlayerHavingCash(int cash) {
-        return new Player(0, 0, 0, cash, 0);
+        return PlayerObjectMother.emptyWithCash(cash);
     }
 }

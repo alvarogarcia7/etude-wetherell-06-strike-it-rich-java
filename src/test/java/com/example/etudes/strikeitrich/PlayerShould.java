@@ -6,9 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -21,7 +19,7 @@ public class PlayerShould {
 
     @Test
     public void cannot_exchange_any_items_without_having_received_a_condition () {
-        Player player = new Player(0, 0, 0, 0, 0);
+        Player player = getEmptyPlayerHavingCash(0);
 
         player.sellInventory();
 
@@ -30,7 +28,7 @@ public class PlayerShould {
 
     @Test
     public void exchange_a_single_inventory_item_for_money () {
-        Player player = new Player(0, 0, 0, 0, 0);
+        Player player = getEmptyPlayerHavingCash(0);
         player.finishedInventoryUnits(anyMarketCondition);
 
         player.sellInventory();
@@ -40,22 +38,26 @@ public class PlayerShould {
 
     @Test(expected = BankruptException.class)
     public void going_to_cash_negative_makes_a_player_bankrupt() {
-        final Player player = new Player(0, 0, 0, 10, 0);
+        final Player player = getEmptyPlayerHavingCash(10);
         
         player.pay(11);
     }
 
     @Test
     public void not_be_bankrupt_when_has_money() {
-        final Player player = new Player(0, 0, 0, 10, 0);
+        final Player player = getEmptyPlayerHavingCash(10);
 
         assertThat(player.isNotBankrupt(), is(true));
     }
 
     @Test
     public void be_bankrupt_when_has_no_money() {
-        final Player player = new Player(0, 0, 0, -1, 0);
+        final Player player = getEmptyPlayerHavingCash(-1);
 
         assertThat(player.isNotBankrupt(), is(false));
+    }
+
+    private Player getEmptyPlayerHavingCash(int cash) {
+        return new Player(0, 0, 0, cash, 0);
     }
 }

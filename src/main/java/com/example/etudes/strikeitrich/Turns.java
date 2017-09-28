@@ -27,8 +27,7 @@ public class Turns {
             try {
                 current.payFixedExpenses(calculator);
             } catch (BankruptException e) {
-                System.out.println("Player " + current.name() + " is bankrupt");
-                bankrupted.add(current);
+                playerIsBankrupt(current);
             }
         }
         players.stream().filter(Player::isNotBankrupt).forEach(player -> player.rawMaterialUnits(bank.rawMaterialUnitConditions()));
@@ -38,8 +37,7 @@ public class Turns {
             try {
                 current.produceStock();
             } catch (BankruptException e) {
-                System.out.println("Player " + current.name() + " is bankrupt");
-                bankrupted.add(current);
+                playerIsBankrupt(current);
             }
         }
         players.stream().filter(Player::isNotBankrupt).forEach(Player::sellInventory);
@@ -47,6 +45,11 @@ public class Turns {
         players.stream().filter(Player::isNotBankrupt).forEach(Player::payOutstandingLoans);
         players.stream().filter(Player::isNotBankrupt).forEach(Player::takeOutLoans);
         players.stream().filter(Player::isNotBankrupt).forEach(Player::orderConstruction);
+    }
+
+    private void playerIsBankrupt(Player current) {
+        System.out.println("Player " + current.name() + " is bankrupt: " + current.cash());
+        bankrupted.add(current);
     }
 
     private List<Player> validPlayers() {

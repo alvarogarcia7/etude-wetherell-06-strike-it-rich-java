@@ -174,4 +174,8 @@ public class Player {
                 .append(automatedFactoryUnits)
                 .toHashCode();
     }
+
+    public int cash() {
+        return cash;
+    }
 }

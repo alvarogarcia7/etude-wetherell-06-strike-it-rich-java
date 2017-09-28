@@ -14,8 +14,11 @@ public class Game {
     }
 
     public void start() {
+        System.out.println("[DEAL] Dealing players with initial amounts");
         players.forEach(gameStarter::deal);
+        int i = 0;
         while (turns.canStartNew()) {
+            System.out.println("[TURN] Starting a new turn: " + ++i);
             turns.newTurn();
         }
     }

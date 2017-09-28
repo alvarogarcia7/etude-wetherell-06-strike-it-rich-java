@@ -14,17 +14,17 @@ public abstract class FixedExpensesShould {
     private static final int MANY = 3;
 
     @Test
-    public void when_zero_units() throws Exception {
+    public void when_zero_units() {
         assertThatPayingFor(ZERO).reducesTheCash();
     }
 
     @Test
-    public void when_one_unit() throws Exception {
+    public void when_one_unit() {
         assertThatPayingFor(ONE).reducesTheCash();
     }
 
     @Test
-    public void when_many_units() throws Exception {
+    public void when_many_units() {
         assertThatPayingFor(MANY).reducesTheCash();
     }
 

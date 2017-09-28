@@ -117,6 +117,26 @@ public class Player {
     public void orderConstruction() {
     }
 
+    public void decreaseFinishedInventoryUnits (final int amount) {
+        this.finishedInventoryUnits -= amount;
+    }
+
+    public int finishedInventoryUnits () {
+        return finishedInventoryUnits;
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public boolean isNotBankrupt() {
+        return !isBankrupt();
+    }
+
+    private boolean isBankrupt() {
+        return cash < 0;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
@@ -153,25 +173,5 @@ public class Player {
                 .append(cash)
                 .append(automatedFactoryUnits)
                 .toHashCode();
-    }
-
-    public void decreaseFinishedInventoryUnits (final int amount) {
-        this.finishedInventoryUnits -= amount;
-    }
-
-    public int finishedInventoryUnits () {
-        return finishedInventoryUnits;
-    }
-
-    public String name() {
-        return name;
-    }
-
-    public boolean isNotBankrupt() {
-        return !isBankrupt();
-    }
-
-    private boolean isBankrupt() {
-        return cash < 0;
     }
 }

@@ -17,6 +17,7 @@ public class Player {
     private int automatedFactoryUnits;
     private final Strategy strategy;
     private Optional<MarketCondition> finishedInventoryUnitsCondition;
+    private String name;
 
     public Player (
         int standardFactories,
@@ -24,16 +25,17 @@ public class Player {
         int finishedInventoryUnits,
         int cash,
         int automatedFactoryUnits) {
-        this(standardFactories, rawMaterialUnits, finishedInventoryUnits, cash, automatedFactoryUnits, SELL_ONE);
+        this(standardFactories, rawMaterialUnits, finishedInventoryUnits, cash, automatedFactoryUnits, SELL_ONE, "none");
     }
 
-    public Player (
+    public Player(
             int standardFactories,
             int rawMaterialUnits,
             int finishedInventoryUnits,
             int cash,
             int automatedFactoryUnits,
-            Strategy strategy) {
+            Strategy strategy,
+            String name) {
 
         this.standardFactories = standardFactories;
         this.rawMaterialUnits = rawMaterialUnits;
@@ -42,6 +44,7 @@ public class Player {
         this.automatedFactoryUnits = automatedFactoryUnits;
         this.strategy = strategy;
         this.finishedInventoryUnitsCondition = Optional.empty();
+        this.name = name;
     }
 
     void receiveStandardFactories(int amount) {
@@ -62,6 +65,7 @@ public class Player {
 
 
     void payFixedExpenses(MaterialsCalculator calculator) {
+        System.out.println("payFixedExpenses for " + this.name);
         calculator.calculateRawMaterials(rawMaterialUnits, this);
         calculator.calculateFinishedInventoryUnits(finishedInventoryUnits, this);
         calculator.calculateStandardFactories(standardFactories, this);
@@ -70,13 +74,18 @@ public class Player {
 
     void pay(int amount) {
         cash -= amount;
+        if (cash < 0) {
+            throw new BankruptException();
+        }
     }
 
     void rawMaterialUnits(MarketCondition rawMaterialUnitConditions) {
+        System.out.println("rawMaterialUnits for " + this.name);
 
     }
 
     void finishedInventoryUnits(MarketCondition marketCondition) {
+        System.out.println("finishedInventoryUnits for " + this.name);
         this.finishedInventoryUnitsCondition = Optional.of(marketCondition);
     }
 
@@ -152,5 +161,13 @@ public class Player {
 
     public int finishedInventoryUnits () {
         return finishedInventoryUnits;
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public boolean isNotBankrupt() {
+        return !(this.cash < 0);
     }
 }

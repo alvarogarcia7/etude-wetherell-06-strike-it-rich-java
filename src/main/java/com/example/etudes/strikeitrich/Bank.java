@@ -6,6 +6,10 @@ public class Bank {
     }
 
     public MarketCondition finishedInventoryUserConditions() {
-        return null;
+        // TODO AGB dummy data
+        return new MarketCondition(p->{
+            p.finishedInventoryUnits();
+            return null;
+        }, new PriceLevel(1,2,1,1));
     }
 }

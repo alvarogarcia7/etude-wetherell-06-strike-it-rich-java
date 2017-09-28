@@ -2,6 +2,7 @@ package com.example.etudes.strikeitrich;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Turns {
     private final List<Player> players;
@@ -22,22 +23,30 @@ public class Turns {
 
     public void newTurn() {
         final List<Player> players = validPlayers();
-        players.forEach(player -> player.payFixedExpenses(calculator));
-        players.forEach(player -> player.rawMaterialUnits(bank.rawMaterialUnitConditions()));
-        players.forEach(player -> player.finishedInventoryUnits(bank.finishedInventoryUserConditions()));
-        players.forEach(Player::obtainRawMaterialUnitBid);
         for (Player current : players) {
             try {
-                current.produceStock();
+                current.payFixedExpenses(calculator);
             } catch (BankruptException e) {
+                System.out.println("Player " + current.name() + " is bankrupt");
                 bankrupted.add(current);
             }
         }
-        players.forEach(Player::sellInventory);
-        players.forEach(Player::payLoanInterest);
-        players.forEach(Player::payOutstandingLoans);
-        players.forEach(Player::takeOutLoans);
-        players.forEach(Player::orderConstruction);
+        players.stream().filter(Player::isNotBankrupt).forEach(player -> player.rawMaterialUnits(bank.rawMaterialUnitConditions()));
+        players.stream().filter(Player::isNotBankrupt).forEach(player -> player.finishedInventoryUnits(bank.finishedInventoryUserConditions()));
+        players.stream().filter(Player::isNotBankrupt).forEach(Player::obtainRawMaterialUnitBid);
+        for (Player current : players.stream().filter(Player::isNotBankrupt).collect(Collectors.toList())) {
+            try {
+                current.produceStock();
+            } catch (BankruptException e) {
+                System.out.println("Player " + current.name() + " is bankrupt");
+                bankrupted.add(current);
+            }
+        }
+        players.stream().filter(Player::isNotBankrupt).forEach(Player::sellInventory);
+        players.stream().filter(Player::isNotBankrupt).forEach(Player::payLoanInterest);
+        players.stream().filter(Player::isNotBankrupt).forEach(Player::payOutstandingLoans);
+        players.stream().filter(Player::isNotBankrupt).forEach(Player::takeOutLoans);
+        players.stream().filter(Player::isNotBankrupt).forEach(Player::orderConstruction);
     }
 
     private List<Player> validPlayers() {

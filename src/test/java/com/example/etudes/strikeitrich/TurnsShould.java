@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Arrays;
@@ -15,10 +16,8 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class TurnsShould {
 
-    @Mock
     private Player player1;
 
-    @Mock
     private Player player2;
 
     @Mock
@@ -33,6 +32,10 @@ public class TurnsShould {
 
     @Before
     public void setUp() throws Exception {
+        player1 = Mockito.mock(Player.class);
+        given(player1.isNotBankrupt()).willReturn(true);
+        player2 = Mockito.mock(Player.class);
+        given(player2.isNotBankrupt()).willReturn(true);
         players = Arrays.asList(player1, player2);
         turns = Turns.aNew(players, bank, materialCalculator);
     }

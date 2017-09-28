@@ -34,7 +34,7 @@ public class StrategySellAllShould {
     }
 
     private void verifyInteractionBasedOnFinishedInventoryUnits (final int finishedInventoryUnits) {
-        Player player = new Player(0, 0, finishedInventoryUnits, 0, 0, SELL_ALL);
+        Player player = new Player(0, 0, finishedInventoryUnits, 0, 0, SELL_ALL, "none");
         player.finishedInventoryUnits(decreaseFinishedInventoryUnitsMarketCondition);
 
         player.sellInventory();

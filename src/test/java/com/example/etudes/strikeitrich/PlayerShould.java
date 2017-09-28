@@ -6,6 +6,10 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -32,5 +36,26 @@ public class PlayerShould {
         player.sellInventory();
 
         verify(anyMarketCondition).apply(player);
+    }
+
+    @Test(expected = BankruptException.class)
+    public void going_to_cash_negative_makes_a_player_bankrupt() {
+        final Player player = new Player(0, 0, 0, 10, 0);
+        
+        player.pay(11);
+    }
+
+    @Test
+    public void not_be_bankrupt_when_has_money() {
+        final Player player = new Player(0, 0, 0, 10, 0);
+
+        assertThat(player.isNotBankrupt(), is(true));
+    }
+
+    @Test
+    public void be_bankrupt_when_has_no_money() {
+        final Player player = new Player(0, 0, 0, -1, 0);
+
+        assertThat(player.isNotBankrupt(), is(false));
     }
 }

@@ -74,7 +74,7 @@ public class Player {
 
     void pay(int amount) {
         cash -= amount;
-        if (cash < 0) {
+        if (isBankrupt()) {
             throw new BankruptException();
         }
     }
@@ -168,6 +168,10 @@ public class Player {
     }
 
     public boolean isNotBankrupt() {
-        return !(this.cash < 0);
+        return !isBankrupt();
+    }
+
+    private boolean isBankrupt() {
+        return cash < 0;
     }
 }
